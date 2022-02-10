@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{2999e0eb-cfea-4bbf-874b-ad9085cf4699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\SDLWrapper">
+      <UniqueIdentifier>{d2b50510-e3c6-4e03-8e44-b7a04d739d30}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDLWrapper\Window.cpp">
+      <Filter>Engine\SDLWrapper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\SDLWrapper\Window.h">
+      <Filter>Engine\SDLWrapper</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
