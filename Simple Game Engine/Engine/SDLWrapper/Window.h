@@ -14,14 +14,16 @@ namespace SDLW {
 		Window(std::string name);
 		~Window();
 
-		SDL_Surface* GetWindowSurface();
 		void Update();
 		
-
-		SDL_Window* window;
-		SDL_Surface* surface;
+		// Gets 
+		SDL_Surface* GetSurface();
 
 		int width = 640;
 		int height = 480;
+
+	private:
+		SDL_Window* window;
+		SDL_Surface* surface;
 	};
 }
