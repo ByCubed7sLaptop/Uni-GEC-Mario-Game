@@ -23,16 +23,16 @@ namespace SDLW {
        
         // Get window surface
         surface = SDL_GetWindowSurface(window);
+        
              
         // Fill the surface white
-        SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0xFF, 0xFF, 0xFF));
-        
+        //SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0xFF, 0xFF, 0xFF));
+        //
         // Update the surface
-        SDL_UpdateWindowSurface(window);
+        //SDL_UpdateWindowSurface(window);
 
         // Wait two seconds
-        SDL_Delay(2000);
-        
+        //SDL_Delay(2000);
 	}
 
     Window::~Window()

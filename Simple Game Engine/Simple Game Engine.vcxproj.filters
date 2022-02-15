@@ -12,16 +12,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\SDLWrapper\Window.cpp">
       <Filter>Engine\SDLWrapper</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Application.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Input.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\SDLWrapper\Window.h">
       <Filter>Engine\SDLWrapper</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Application.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h" />
   </ItemGroup>
 </Project>

@@ -23,6 +23,7 @@ int main(int argc, char* args[])
         std::cout << "SDL could not initialize! SDL_Error:" << std::endl << SDL_GetError() << std::endl;
         return 0;
     }
+    SDL_Surface* gHelloWorld = SDL_LoadBMP("assets/temp.bmp");
 
     SDLW::Window* window = new SDLW::Window("SDL Tutorial");
     SDL_Surface* screenSurface = window->GetSurface();
@@ -33,8 +34,12 @@ int main(int argc, char* args[])
     // Update the surface
     window->Update();
 
+    SDL_BlitSurface(gHelloWorld, NULL, screenSurface, NULL);
+    
+    window->Update();
+
     // Wait two seconds
-    //SDL_Delay(2000);
+    SDL_Delay(2000);
     
     //Destroy window
     delete window;
