@@ -23,6 +23,10 @@ int main(int argc, char* args[])
         std::cout << "SDL could not initialize! SDL_Error:" << std::endl << SDL_GetError() << std::endl;
         return 0;
     }
+
+    // Since SDL_Surface is just the raw pixel data, it is not optimized in any way and should be avoided when rendering.
+    // Luckily, you can simply convert an SDL_Surface to SDL_Texture using
+    // SDL_Texture* SDL_CreateTextureFromSurface
     SDL_Surface* gHelloWorld = SDL_LoadBMP("assets/temp.bmp");
 
     SDLW::Window* window = new SDLW::Window("SDL Tutorial");
@@ -35,7 +39,6 @@ int main(int argc, char* args[])
     window->Update();
 
     SDL_BlitSurface(gHelloWorld, NULL, screenSurface, NULL);
-    
     window->Update();
 
     // Wait two seconds
