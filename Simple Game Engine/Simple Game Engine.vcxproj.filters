@@ -9,9 +9,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Engine\SDLWrapper\Window.cpp">
       <Filter>Engine\SDLWrapper</Filter>
     </ClCompile>
@@ -38,13 +35,9 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Vector.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Storable.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Simple Game Engine.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="bitmap1.bmp" />
   </ItemGroup>
 </Project>

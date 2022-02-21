@@ -398,7 +398,8 @@ FodyWeavers.xsd
 *.sln.iml
 
 
-.sln
+*.sln
+*.vcxproj
 
 
 
