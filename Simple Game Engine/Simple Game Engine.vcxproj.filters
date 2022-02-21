@@ -24,6 +24,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="Storable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\SDLWrapper\Window.h">
@@ -37,5 +38,13 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Storable.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Simple Game Engine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp" />
   </ItemGroup>
 </Project>
