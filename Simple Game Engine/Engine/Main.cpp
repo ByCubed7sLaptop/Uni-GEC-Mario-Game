@@ -1,16 +1,13 @@
 
-#include "Engine/SDLWrapper/Window.h"
-
 #include <iostream>
+
+#include "Application.h"
+#include "Window.h"
+#include "SDLWindow.h"
 
 //Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
-
-//Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
-
 
 // SEE: https://lazyfoo.net/tutorials/SDL/03_event_driven_programming/index.php
 
@@ -24,28 +21,20 @@ int main(int argc, char* args[])
         return 0;
     }
 
+
+
     // Since SDL_Surface is just the raw pixel data, it is not optimized in any way and should be avoided when rendering.
     // Luckily, you can simply convert an SDL_Surface to SDL_Texture using
     // SDL_Texture* SDL_CreateTextureFromSurface
     SDL_Surface* gHelloWorld = SDL_LoadBMP("assets/temp.bmp");
 
-    SDLW::Window* window = new SDLW::Window("SDL Tutorial");
-    SDL_Surface* screenSurface = window->GetSurface();
-
-    // Fill the surface white
-    SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
-
-    // Update the surface
-    window->Update();
-
-    SDL_BlitSurface(gHelloWorld, NULL, screenSurface, NULL);
-    window->Update();
-
-    // Wait two seconds
-    SDL_Delay(2000);
+    Core::Window* window = new SDLW::SDLWindow("SDL Tutorial");
+    Core::Application* app = new Core::Application(window);
     
-    //Destroy window
-    delete window;
+    
+    app->Mainloop();
+
+    delete app;
 
     //Quit SDL subsystems
     SDL_Quit();

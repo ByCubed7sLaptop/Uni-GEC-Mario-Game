@@ -72,6 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -139,28 +141,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Application.cpp" />
-    <ClCompile Include="Engine\SDLWrapper\Window.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Input.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="Storable.cpp" />
-    <ClCompile Include="Vector.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
-    <ClInclude Include="Engine\SDLWrapper\Window.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="Storable.h" />
-    <ClInclude Include="Vector.h" />
+    <ClInclude Include="Engine\Component.h" />
+    <ClInclude Include="Engine\GameObject.h" />
+    <ClInclude Include="Engine\Input.h" />
+    <ClInclude Include="Engine\Object.h" />
+    <ClInclude Include="Engine\Renderer.h" />
+    <ClInclude Include="Engine\Scene.h" />
+    <ClInclude Include="Engine\SDLWindow.h" />
+    <ClInclude Include="Engine\Storable.h" />
+    <ClInclude Include="Engine\Vector.h" />
+    <ClInclude Include="Engine\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Simple Game Engine.rc" />
+    <ClCompile Include="Engine\Application.cpp" />
+    <ClCompile Include="Engine\Component.cpp" />
+    <ClCompile Include="Engine\GameObject.cpp" />
+    <ClCompile Include="Engine\Input.cpp" />
+    <ClCompile Include="Engine\Main.cpp" />
+    <ClCompile Include="Engine\Object.cpp" />
+    <ClCompile Include="Engine\Renderer.cpp" />
+    <ClCompile Include="Engine\Scene.cpp" />
+    <ClCompile Include="Engine\SDLWindow.cpp" />
+    <ClCompile Include="Engine\Storable.cpp" />
+    <ClCompile Include="Engine\Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

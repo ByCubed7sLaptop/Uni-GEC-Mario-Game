@@ -8,7 +8,7 @@
 namespace Core {
 
     // Forward declaration
-    class Components;
+    class Component;
 
     // Represents anything which can exist in a SceneA Scene contains the environments and menus of your game. 
     class GameObject : public Object
@@ -43,34 +43,38 @@ namespace Core {
         void RemoveChild(GameObject* child);
 
         // Returns the components
-        std::set<Components*> GetComponents();
+        std::set<Component*> GetComponents();
 
         // Returns a component via index
-        GameObject* Component(int index);
+        Component* GetComponent(int index);
 
         // Add a component
-        void AddComponent(Components* newComponent);
+        void AddComponent(Component* newComponent);
         
         // Remove a component
-        void RemoveComponent(Components* component);
+        void RemoveComponent(Component* component);
 
         // Returns the WORLD position
         Vector<float, 3> Position();
         
         // Sets the WORLD position
-        void SetPosition();
+        void SetPosition(Vector<float, 3> newPosition);
 
         // Returns the LOCAL position
         Vector<float, 3> LocalPosition();
 
         // Sets the LOCAL position
-        void SetLocalPosition();
+        void SetLocalPosition(Vector<float, 3> newLocalPosition);
 
         // Returns the WORLD rotation
-        Vector<float, 3> Rotation();
+        float Rotation();
 
         // Returns the LOCAL rotation
-        void SetRotation();
+        void SetRotation(float newRotation);
+
+        // Tell the gameObject to destroy itself.
+        // Simular to the deconstructor
+        void Destroy();
 
     private:
         // The parent of the gameobject
@@ -80,7 +84,7 @@ namespace Core {
         std::set<GameObject*> children;
 
         // The collection of compoents the gameObject has
-        std::set<Components*> components;
+        std::set<Component*> components;
 
         // The WORLD / SCENE position of the gameObject
         Vector<float, 3> position;
