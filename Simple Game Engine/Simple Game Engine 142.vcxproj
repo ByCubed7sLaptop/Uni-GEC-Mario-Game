@@ -148,6 +148,7 @@
     <ClInclude Include="Engine\Object.h" />
     <ClInclude Include="Engine\Renderer.h" />
     <ClInclude Include="Engine\Scene.h" />
+    <ClInclude Include="Engine\SDLTexture.h" />
     <ClInclude Include="Engine\SDLWindow.h" />
     <ClInclude Include="Engine\Storable.h" />
     <ClInclude Include="Engine\Vector.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="Engine\Object.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
+    <ClCompile Include="Engine\SDLTexture.cpp" />
     <ClCompile Include="Engine\SDLWindow.cpp" />
     <ClCompile Include="Engine\Storable.cpp" />
     <ClCompile Include="Engine\Window.cpp" />

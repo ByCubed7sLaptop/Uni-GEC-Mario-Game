@@ -1,10 +1,10 @@
 #include "Application.h"
 
-#include "Window.h"
+#include "SDLWindow.h"
 
 namespace Core {
 
-	Application::Application(Window* bindWindow)
+	Application::Application(SDLW::SDLWindow* bindWindow)
 	{
 		scene = nullptr;
 		window = bindWindow;

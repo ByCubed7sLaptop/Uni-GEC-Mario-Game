@@ -4,20 +4,33 @@
 #include <SDL.h>
 #include <stdio.h>
 
-#include "Window.h"
+#include "Vector.h"
+#include "Input.h"
 
 namespace SDLW 
 {
-	class SDLWindow : public Core::Window
+	class SDLWindow
 	{
 	public:
 		SDLWindow(std::string name);
 		~SDLWindow();
 
-		void Update() override;
+		void Update();
+		void PollEvents();
 
-	private:
+		Core::Vector<int, 2> Size();
+		void SetSize(Core::Vector<int, 2> newSize);
+
+		SDL_Renderer* Renderer();
+
+	protected:
+		std::string title;
+		Core::Vector<int, 2> size;
+
 		SDL_Window* window;
+		SDL_Renderer* renderer;
 		SDL_Surface* surface;
+
+		Core::Input* input;
 	};
 }

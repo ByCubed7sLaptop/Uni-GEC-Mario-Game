@@ -8,16 +8,18 @@
 
 #pragma once
 
+// Forward Declaration
+namespace SDLW { class SDLWindow; }
+
 namespace Core {
 
 	// Forward Declaration
-	class Window;
 	class Scene;
 
 
 	class Application {
 	public:
-		Application(Window* bindWindow);
+		Application(SDLW::SDLWindow* bindWindow);
 		~Application();
 
 		void Load(Scene* newScene);
@@ -30,7 +32,7 @@ namespace Core {
 
 	private:
 		bool loop;
-		Window* window;
+		SDLW::SDLWindow* window;
 		Scene* scene;
 	};
 }

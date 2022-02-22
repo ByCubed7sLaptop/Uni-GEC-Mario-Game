@@ -4,6 +4,7 @@
 #include "Application.h"
 #include "Window.h"
 #include "SDLWindow.h"
+#include "SDLTexture.h"
 
 //Using SDL and standard IO
 #include <SDL.h>
@@ -26,15 +27,41 @@ int main(int argc, char* args[])
     // Since SDL_Surface is just the raw pixel data, it is not optimized in any way and should be avoided when rendering.
     // Luckily, you can simply convert an SDL_Surface to SDL_Texture using
     // SDL_Texture* SDL_CreateTextureFromSurface
-    SDL_Surface* gHelloWorld = SDL_LoadBMP("assets/temp.bmp");
 
-    Core::Window* window = new SDLW::SDLWindow("SDL Tutorial");
+    SDLW::SDLWindow* window = new SDLW::SDLWindow("SDL Tutorial");
+    SDL_Renderer* renderer = window->Renderer();
     Core::Application* app = new Core::Application(window);
     
-    
-    app->Mainloop();
+    SDLW::SDLTexture* texture = new SDLW::SDLTexture(renderer);
+    texture->Load("Mario/WA.bmp");
+
+    // TODO: Move to app
+    //app->Mainloop();
+
+    bool loop = true;
+    while (!loop)
+    {
+        // Update the window
+        window->Update();
+
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+            case SDL_QUIT:
+                loop = true;
+                break;
+            }
+        }
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer, texture->Texture(), NULL, NULL);
+        SDL_RenderPresent(renderer);
+    }
+
 
     delete app;
+    SDL_DestroyRenderer(renderer);
 
     //Quit SDL subsystems
     SDL_Quit();

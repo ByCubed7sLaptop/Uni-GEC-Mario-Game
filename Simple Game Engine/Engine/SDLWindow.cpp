@@ -5,8 +5,8 @@
 namespace SDLW
 {
     SDLWindow::SDLWindow(std::string name)
-        : Core::Window(name)
     {
+        title = name;
         size = { 640, 480 };
 
         // Init varibles
@@ -17,6 +17,12 @@ namespace SDLW
         window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, size.GetX(), size.GetY(), SDL_WINDOW_SHOWN);
         if (window == NULL) {
             std::cout << "Window could not be created! SDL_Error:" << std::endl << SDL_GetError() << std::endl;
+            return;
+        }
+
+        renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+        if (renderer == NULL){
+            std::cout << "Renderer could not be created! SDL Error:" << std::endl << SDL_GetError() << std::endl;
             return;
         }
 
@@ -39,6 +45,11 @@ namespace SDLW
         SDL_DestroyWindow(window);
         window = nullptr;
         surface = nullptr;
+    }
+
+    SDL_Renderer* SDLWindow::Renderer()
+    {
+        return SDL_GetRenderer(window);
     }
 
     void SDLWindow::Update() {
@@ -64,5 +75,20 @@ namespace SDLW
 
 
         SDL_UpdateWindowSurface(window);
+    }
+
+    void SDLWindow::PollEvents()
+    {
+    }
+
+
+    Core::Vector<int, 2> SDLWindow::Size()
+    {
+        return size;
+    }
+
+    void SDLWindow::SetSize(Core::Vector<int, 2> newSize)
+    {
+        size = newSize;
     }
 }
