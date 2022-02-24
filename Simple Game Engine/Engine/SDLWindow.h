@@ -15,8 +15,7 @@ namespace SDLW
 		SDLWindow(std::string name);
 		~SDLWindow();
 
-		void Update();
-		void PollEvents();
+		bool Update();
 
 		Core::Vector<int, 2> Size();
 		void SetSize(Core::Vector<int, 2> newSize);

@@ -31,7 +31,7 @@ namespace SDLW
 
 
         // Fill the surface white
-        SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0xFF, 0xFF, 0xFF));
+        //SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0xFF, 0xFF, 0xFF));
         //
         // Update the surface
         //SDL_UpdateWindowSurface(window);
@@ -52,33 +52,30 @@ namespace SDLW
         return SDL_GetRenderer(window);
     }
 
-    void SDLWindow::Update() {
+    bool SDLWindow::Update() {
 
         // Poll events
-
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             // We are only worried about SDL_KEYDOWN and SDL_KEYUP events
             switch (event.type) {
             case SDL_KEYDOWN:
-                printf("Key press detected\n");
+                std::cout << "Key press detected" << std::endl;
                 break;
 
             case SDL_KEYUP:
-                printf("Key release detected\n");
+                std::cout << "Key release detected" << std::endl;
                 break;
+
+            case SDL_QUIT:
+                return false;
 
             default:
                 break;
             }
         }
 
-
-        SDL_UpdateWindowSurface(window);
-    }
-
-    void SDLWindow::PollEvents()
-    {
+        return true;
     }
 
 

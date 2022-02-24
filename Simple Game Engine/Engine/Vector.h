@@ -15,7 +15,7 @@
 */
 
 // One solution would to be to also include the .cpp file. However, this may send the wrong message.
-// TEST: Create a "VectorImple.h" file to include both .h .cpp files and see if we get a Unresolved External exception
+// TEST: Create a "VectorImple.h" file which includes both .h .cpp files and see if we get an Unresolved External exception
 
 namespace Core {
 
