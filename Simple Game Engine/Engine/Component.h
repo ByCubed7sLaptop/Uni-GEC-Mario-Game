@@ -16,8 +16,8 @@ namespace Core {
         Component(GameObject* owner);
         GameObject* Owner();
 
-        void Draw();
-        void Update();
+        virtual void Draw() = 0;
+        virtual void Update() = 0;
 
     protected:
         GameObject* gameObject;

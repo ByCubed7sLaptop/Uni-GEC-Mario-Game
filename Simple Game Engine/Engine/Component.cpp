@@ -15,13 +15,4 @@ namespace Core
 	{
 		return gameObject;
 	}
-
-	void Component::Draw()
-	{
-	}
-
-	void Component::Update()
-	{
-	}
-
 }

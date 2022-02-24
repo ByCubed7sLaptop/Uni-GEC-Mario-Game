@@ -6,6 +6,7 @@
 #include "SDLWindow.h"
 #include "SDLTexture.h"
 #include "Scene.h"
+#include "Component.h"
 
 //Using SDL and standard IO
 #include <SDL.h>
@@ -52,6 +53,10 @@ int main(int argc, char* args[])
 
         // Update the window
         loop = window->Update();
+
+        // Render
+        for (Core::Component* componet : scene->components)
+            componet->Draw();
         SDL_RenderCopy(renderer, texture->Texture(), NULL, NULL);
 
         SDL_RenderPresent(renderer);
