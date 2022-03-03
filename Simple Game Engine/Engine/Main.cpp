@@ -6,11 +6,13 @@
 #include "SDLWindow.h"
 #include "SDLTexture.h"
 #include "Scene.h"
+#include "GameObject.h"
 #include "Component.h"
 
 //Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
+#include "Sprite.h"
 
 // SEE: https://lazyfoo.net/tutorials/SDL/03_event_driven_programming/index.php
 
@@ -34,9 +36,18 @@ int main(int argc, char* args[])
     Core::Application* app = new Core::Application(window);
     
     Core::Scene* scene = new Core::Scene();
+    
 
     SDLW::SDLTexture* texture = new SDLW::SDLTexture(renderer);
     texture->Load("Mario/WA.bmp");
+
+    Core::GameObject* player = new Core::GameObject(scene);
+    Sprite* playerSprite = new Sprite(player);
+
+    playerSprite
+        ->SetTexture(texture)
+        ->SetPivot(Core::Vector<float, 2>({ 0.5, 0.5 }))
+        ->SetSize(Core::Vector<int, 2>({ 50, 50 }));
 
     // TODO: Move to app
     //app->Mainloop();
@@ -51,15 +62,21 @@ int main(int argc, char* args[])
         SDL_RenderClear(renderer);
 
 
+        // Update the Components
+        for (Core::Component* component : scene->components)
+            component->Update();
+
         // Update the window
         loop = window->Update();
 
-        // Render
-        for (Core::Component* componet : scene->components)
-            componet->Draw();
-        SDL_RenderCopy(renderer, texture->Texture(), NULL, NULL);
+        // Render the Components
+        for (Core::Component* component : scene->components)
+            component->Draw(renderer);
 
+        // Swap the buffer
         SDL_RenderPresent(renderer);
+
+        // https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
 
         Uint32 frameTime = SDL_GetTicks() - frameStart;
 

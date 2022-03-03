@@ -14,9 +14,11 @@ namespace Core {
         components = std::set<Component*>();
     }
 
-    bool Scene::Render(Renderer* renderer)
+    bool Scene::Render(SDL_Renderer* renderer)
     {
-        return false;
+        SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+        
+        return true;
     }
 
     bool Scene::Load(std::string filepath)

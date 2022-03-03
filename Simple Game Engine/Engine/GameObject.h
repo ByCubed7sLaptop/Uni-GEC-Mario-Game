@@ -9,20 +9,25 @@ namespace Core {
 
     // Forward declaration
     class Component;
+    class Scene;
 
     // Represents anything which can exist in a SceneA Scene contains the environments and menus of your game. 
     class GameObject : public Object
     {
+    public:
 
         // CONSTRUCTORS
         // ----------------------------------------
 
         // Default constructor
-        GameObject();
+        GameObject(Scene* scene);
 
 
         // METHODS
         // ----------------------------------------
+        
+        // Return the scene
+        Scene* GetScene();
 
         // Get the parent
         GameObject* Parent();
@@ -77,6 +82,9 @@ namespace Core {
         void Destroy();
 
     private:
+
+        Scene* scene;
+
         // The parent of the gameobject
         GameObject* parent;
 

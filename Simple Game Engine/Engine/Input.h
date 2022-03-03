@@ -9,6 +9,9 @@ namespace Core {
 
 	class Input
 	{
+	public:
+		static Input* instance;
+
 		Input();
 		
 		void Tick();

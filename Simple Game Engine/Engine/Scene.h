@@ -3,6 +3,9 @@
 #include "Object.h"
 #include "Storable.h"
 
+#include <SDL.h>
+#include <stdio.h>
+
 #include <set>
 
 namespace Core {
@@ -21,7 +24,7 @@ namespace Core {
 		std::set<GameObject*> gameObjects;
 		std::set<Component*> components;
 
-		bool Render(Renderer* renderer);
+		bool Render(SDL_Renderer* renderer);
 		
 		bool Load(std::string filepath);
 		bool Save(std::string filepath);

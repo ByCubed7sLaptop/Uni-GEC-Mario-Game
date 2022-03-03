@@ -1,5 +1,7 @@
 #include "SDLWindow.h"
 
+#include "Input.h"
+
 #include <iostream>
 
 namespace SDLW
@@ -38,6 +40,8 @@ namespace SDLW
 
         // Wait two seconds
         //SDL_Delay(2000);
+
+        input = new Core::Input();
     }
 
     SDLWindow::~SDLWindow()
@@ -61,10 +65,12 @@ namespace SDLW
             switch (event.type) {
             case SDL_KEYDOWN:
                 std::cout << "Key press detected" << std::endl;
+                Core::Input::instance->KeyChangeState(event.key.keysym.sym, 1);
                 break;
 
             case SDL_KEYUP:
                 std::cout << "Key release detected" << std::endl;
+                Core::Input::instance->KeyChangeState(event.key.keysym.sym, 0);
                 break;
 
             case SDL_QUIT:

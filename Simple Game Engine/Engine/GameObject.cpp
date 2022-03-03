@@ -1,82 +1,94 @@
 #include "GameObject.h"
 
+#include "Object.h"
+#include "Scene.h"
+#include "Component.h"
+
 namespace Core {
 
-
-    GameObject::GameObject() 
+    GameObject::GameObject(Scene* initScene)
         : Object("GameObject")
     {
+        scene = initScene;
         parent = nullptr;
         rotation = 0;
+
+        initScene->gameObjects.insert(this);
     }
 
-    GameObject* Core::GameObject::Parent()
+    Scene* GameObject::GetScene()
     {
-        return nullptr;
+        return scene;
     }
 
-    GameObject* Core::GameObject::SetParent()
+    GameObject* GameObject::Parent()
     {
-        return nullptr;
+        return parent;
     }
 
-    std::set<GameObject*> Core::GameObject::Children()
+    GameObject* GameObject::SetParent()
+    {
+        //parent = 
+        return this;
+    }
+
+    std::set<GameObject*>  GameObject::Children()
     {
         return std::set<GameObject*>();
     }
 
-    GameObject* Core::GameObject::Child(int index)
+    GameObject* GameObject::Child(int index)
     {
         // Get via index via std::next
         return *std::next(children.begin(), index);
     }
 
-    void Core::GameObject::AddChild(GameObject* newChild)
+    void GameObject::AddChild(GameObject* newChild)
     {
         children.insert(newChild);
     }
 
-    void Core::GameObject::RemoveChild(GameObject* child)
+    void GameObject::RemoveChild(GameObject* child)
     {
         children.erase(child);
     }
 
-    std::set<Component*> Core::GameObject::GetComponents()
+    std::set<Component*> GameObject::GetComponents()
     {
         return components;
     }
 
-    Component* Core::GameObject::GetComponent(int index)
+    Component* GameObject::GetComponent(int index)
     {
         // Get via index via std::next
         return *std::next(components.begin(), index);
     }
 
-    void Core::GameObject::AddComponent(Component* newComponent)
+    void GameObject::AddComponent(Component* newComponent)
     {
     }
 
-    void Core::GameObject::RemoveComponent(Component* component)
+    void GameObject::RemoveComponent(Component* component)
     {
     }
 
-    Vector<float, 3> Core::GameObject::Position() { return position; }
-    void Core::GameObject::SetPosition(Vector<float, 3> newPosition) { position = newPosition; }
+    Vector<float, 3> GameObject::Position() { return position; }
+    void GameObject::SetPosition(Vector<float, 3> newPosition) { position = newPosition; }
 
-    Vector<float, 3> Core::GameObject::LocalPosition()
+    Vector<float, 3> GameObject::LocalPosition()
     {
         if (parent == nullptr) return position;
 
         return { 0 };//parent->Position() - position;
     }
 
-    void Core::GameObject::SetLocalPosition(Vector<float, 3> newLocalPosition)
+    void GameObject::SetLocalPosition(Vector<float, 3> newLocalPosition)
     {
         //position = parent->Position() + newLocalPosition;
     }
 
-    float Core::GameObject::Rotation() { return rotation; }
-    void Core::GameObject::SetRotation(float newRotation) { rotation = newRotation; }
+    float GameObject::Rotation() { return rotation; }
+    void GameObject::SetRotation(float newRotation) { rotation = newRotation; }
 
     void GameObject::Destroy()
     {

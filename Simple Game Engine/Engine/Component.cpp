@@ -2,6 +2,7 @@
 #include "GameObject.h"
 
 #include "Object.h"
+#include "Scene.h"
 
 namespace Core 
 {
@@ -9,6 +10,7 @@ namespace Core
 		: Object("Component")
 	{
 		gameObject = owner;
+		owner->GetScene()->components.insert(this);
 	}
 
 	GameObject* Component::Owner()

@@ -13,6 +13,7 @@
     <ClCompile Include="Engine\SDLWindow.cpp" />
     <ClCompile Include="Engine\Storable.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
+    <ClCompile Include="Engine\Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
@@ -27,6 +28,7 @@
     <ClInclude Include="Engine\Storable.h" />
     <ClInclude Include="Engine\Vector.h" />
     <ClInclude Include="Engine\Window.h" />
+    <ClInclude Include="Engine\Sprite.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

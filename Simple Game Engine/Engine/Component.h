@@ -3,6 +3,9 @@
 #include "Object.h"
 #include "Vector.h"
 
+#include <SDL.h>
+#include <stdio.h>
+
 #include <set>
 
 namespace Core {
@@ -16,7 +19,7 @@ namespace Core {
         Component(GameObject* owner);
         GameObject* Owner();
 
-        virtual void Draw() = 0;
+        virtual void Draw(SDL_Renderer* renderer) = 0;
         virtual void Update() = 0;
 
     protected:
