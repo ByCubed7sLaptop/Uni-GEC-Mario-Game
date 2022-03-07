@@ -1,18 +1,19 @@
 
 #include <iostream>
 
-#include "Application.h"
-#include "Window.h"
-#include "SDLWindow.h"
-#include "SDLTexture.h"
-#include "Scene.h"
-#include "GameObject.h"
-#include "Component.h"
+// TODO: Create an Include header file
+#include "Engine/Application.h"
+#include "Engine/Window.h"
+#include "Engine/SDLWindow.h"
+#include "Engine/SDLTexture.h"
+#include "Engine/Scene.h"
+#include "Engine/GameObject.h"
+#include "Engine/Component.h"
+#include "Engine/Sprite.h"
 
 //Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
-#include "Sprite.h"
 
 // SEE: https://lazyfoo.net/tutorials/SDL/03_event_driven_programming/index.php
 
@@ -27,19 +28,18 @@ int main(int argc, char* args[])
     }
 
 
-    // Since SDL_Surface is just the raw pixel data, it is not optimized in any way and should be avoided when rendering.
-    // Luckily, you can simply convert an SDL_Surface to SDL_Texture using
-    // SDL_Texture* SDL_CreateTextureFromSurface
 
-    SDLW::SDLWindow* window = new SDLW::SDLWindow("SDL Tutorial");
+    SDLW::SDLWindow* window = new SDLW::SDLWindow("Mario");
     SDL_Renderer* renderer = window->Renderer();
     Core::Application* app = new Core::Application(window);
-    
     Core::Scene* scene = new Core::Scene();
     
+    // CREATE THE SCENE
 
+
+    // Init the player
     SDLW::SDLTexture* texture = new SDLW::SDLTexture(renderer);
-    texture->Load("Mario/WA.bmp");
+    texture->Load("assets/textures/WA.bmp");
 
     Core::GameObject* player = new Core::GameObject(scene);
     Sprite* playerSprite = new Sprite(player);
@@ -47,9 +47,16 @@ int main(int argc, char* args[])
     playerSprite
         ->SetTexture(texture)
         ->SetPivot(Core::Vector<float, 2>({ 0.5, 0.5 }))
-        ->SetSize(Core::Vector<int, 2>({ 50, 50 }));
+        ->SetSize({ 100, 100 });
 
-    // TODO: Move to app
+
+
+    //
+
+
+    // --- - - - - - - - - - ---
+
+    // TODO: Move to application class
     //app->Mainloop();
 
     Uint32 frameDelay = 100;
@@ -65,6 +72,7 @@ int main(int argc, char* args[])
         // Update the Components
         for (Core::Component* component : scene->components)
             component->Update();
+        // https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
 
         // Update the window
         loop = window->Update();
@@ -76,7 +84,6 @@ int main(int argc, char* args[])
         // Swap the buffer
         SDL_RenderPresent(renderer);
 
-        // https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
 
         Uint32 frameTime = SDL_GetTicks() - frameStart;
 

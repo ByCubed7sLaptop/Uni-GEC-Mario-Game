@@ -66,6 +66,7 @@ namespace SDLW
             case SDL_KEYDOWN:
                 std::cout << "Key press detected" << std::endl;
                 Core::Input::instance->KeyChangeState(event.key.keysym.sym, 1);
+                std::cout << "event.key.keysym.sym = " << event.key.keysym.sym << std::endl;
                 break;
 
             case SDL_KEYUP:

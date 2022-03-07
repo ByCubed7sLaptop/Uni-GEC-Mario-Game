@@ -1,6 +1,7 @@
 #pragma once
 
 #include <set>
+#include <map>
 
 namespace Core {
 
@@ -17,26 +18,26 @@ namespace Core {
 		void Tick();
 
 		// Change a state of a key
-		void KeyChangeState(int key, int state);
+		void KeyChangeState(unsigned int key, int state);
 
 		// - States
 
 		// Is the key currently pressed
-		bool KeyDown(int key);
+		bool KeyDown(unsigned int key);
 
 		// Was the key pressed ON THIS FRAME
-		bool OnKeyDown(int key);
+		bool OnKeyDown(unsigned int key);
 
 		// Is the key currently released
-		bool KeyUp(int key);
+		bool KeyUp(unsigned int key);
 
 		// Was the key released ON THIS FRAME
-		bool OnKeyUp(int key);
+		bool OnKeyUp(unsigned int key);
 
 	private:
 		// Keyboard state.
-		int keyboard[1024];
-		std::set<int> keyboardChanges;
+		std::map<unsigned int, int> keyboardState;
+		std::set<unsigned int> keyboardChanges;
 
 
 		// SDL_JoyButtonEvent

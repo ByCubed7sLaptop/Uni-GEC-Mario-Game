@@ -1,34 +1,98 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Engine\Application.cpp" />
-    <ClCompile Include="Engine\Component.cpp" />
-    <ClCompile Include="Engine\GameObject.cpp" />
-    <ClCompile Include="Engine\Input.cpp" />
-    <ClCompile Include="Engine\Main.cpp" />
-    <ClCompile Include="Engine\Object.cpp" />
-    <ClCompile Include="Engine\Renderer.cpp" />
-    <ClCompile Include="Engine\Scene.cpp" />
-    <ClCompile Include="Engine\SDLTexture.cpp" />
-    <ClCompile Include="Engine\SDLWindow.cpp" />
-    <ClCompile Include="Engine\Storable.cpp" />
-    <ClCompile Include="Engine\Window.cpp" />
-    <ClCompile Include="Engine\Sprite.cpp" />
+    <ClCompile Include="Engine\Application.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GameObject.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Input.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Object.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Renderer.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Scene.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDLTexture.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDLWindow.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Sprite.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Storable.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Window.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityController.cpp" />
+    <ClCompile Include="PlayerInput.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Application.h" />
-    <ClInclude Include="Engine\Component.h" />
-    <ClInclude Include="Engine\GameObject.h" />
-    <ClInclude Include="Engine\Input.h" />
-    <ClInclude Include="Engine\Object.h" />
-    <ClInclude Include="Engine\Renderer.h" />
-    <ClInclude Include="Engine\Scene.h" />
-    <ClInclude Include="Engine\SDLTexture.h" />
-    <ClInclude Include="Engine\SDLWindow.h" />
-    <ClInclude Include="Engine\Storable.h" />
-    <ClInclude Include="Engine\Vector.h" />
-    <ClInclude Include="Engine\Window.h" />
-    <ClInclude Include="Engine\Sprite.h" />
+    <ClInclude Include="Engine\Application.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GameObject.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Input.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Object.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Renderer.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Scene.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDLTexture.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDLWindow.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Sprite.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Storable.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Vector.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Window.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityController.h" />
+    <ClInclude Include="PlayerInput.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{da7f5b62-3eca-4d91-b277-17141dd7cf5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{0775712e-86a4-44b8-9fb1-e63547c31759}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

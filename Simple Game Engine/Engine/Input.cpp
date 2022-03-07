@@ -4,7 +4,7 @@ namespace Core {
 
 	Input* Input::instance = nullptr;
 
-	Input::Input() : keyboard{0}
+	Input::Input()
 	{
 		instance = this;
 	}
@@ -12,31 +12,31 @@ namespace Core {
 	void Input::Tick()
 	{
 		// Clear the changes
-		keyboardChanges = std::set<int>();
+		keyboardChanges = std::set<unsigned int>();
 	}
 
-	void Input::KeyChangeState(int key, int state)
+	void Input::KeyChangeState(unsigned int key, int state)
 	{
+		keyboardState.emplace(key, state);
 		keyboardChanges.insert(key);
-		keyboard[key] = state;
 	}
 
-	bool Input::KeyDown(int key)
+	bool Input::KeyDown(unsigned int key)
 	{
-		return keyboard[key] == 1;
+		return keyboardState[key] == 1;
 	}
 
-	bool Input::OnKeyDown(int key)
+	bool Input::OnKeyDown(unsigned int key)
 	{
 		return KeyDown(key) && keyboardChanges.find(key) != keyboardChanges.end();
 	}
 
-	bool Input::KeyUp(int key)
+	bool Input::KeyUp(unsigned int key)
 	{
 		return !KeyDown(key);
 	}
 
-	bool Input::OnKeyUp(int key)
+	bool Input::OnKeyUp(unsigned int key)
 	{
 		return KeyUp(key) && keyboardChanges.find(key) != keyboardChanges.end();
 	}

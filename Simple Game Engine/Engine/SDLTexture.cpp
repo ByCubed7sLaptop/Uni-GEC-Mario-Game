@@ -24,13 +24,19 @@ namespace SDLW {
 		SDL_Surface* surface = SDL_LoadBMP(filepath.c_str());
 		if (surface == NULL)
 		{
-			std::cerr << "Unable to load image! SDL Error: " << SDL_GetError() << std::endl;
+			std::cerr << "[SDL Error] Unable to load image! " << std::endl << filepath << std::endl << SDL_GetError() << std::endl;
 			return false;
 		}
 
-		texture = SDL_CreateTextureFromSurface(renderer, surface);
-		SDL_FreeSurface(surface);
+		// Set a transparency colour
+		Uint32 colorkey = SDL_MapRGB(surface->format, 255, 255, 255);
+		SDL_SetColorKey(surface, SDL_TRUE, colorkey);
 
+		// Since SDL_Surface is just the raw pixel data, it is not optimized in any way and should be avoided when rendering.
+		// Luckily, you can simply convert an SDL_Surface to SDL_Texture using
+		texture = SDL_CreateTextureFromSurface(renderer, surface);
+		
+		SDL_FreeSurface(surface);
 		return true;
 	}
 
