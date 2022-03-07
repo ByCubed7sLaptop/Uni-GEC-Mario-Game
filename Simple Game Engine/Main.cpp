@@ -1,4 +1,3 @@
-
 #include <iostream>
 
 // TODO: Create an Include header file
@@ -10,6 +9,8 @@
 #include "Engine/GameObject.h"
 #include "Engine/Component.h"
 #include "Engine/Sprite.h"
+#include "EntityController.h"
+#include "PlayerInput.h"
 
 //Using SDL and standard IO
 #include <SDL.h>
@@ -49,8 +50,10 @@ int main(int argc, char* args[])
         ->SetPivot(Core::Vector<float, 2>({ 0.5, 0.5 }))
         ->SetSize({ 100, 100 });
 
-
-
+    EntityController* playerController = new EntityController(player);
+    
+    PlayerInput* playerInput = new PlayerInput(player);
+    playerInput->SetController(playerController);
     //
 
 
@@ -59,7 +62,7 @@ int main(int argc, char* args[])
     // TODO: Move to application class
     //app->Mainloop();
 
-    Uint32 frameDelay = 100;
+    Uint32 frameDelay = 0.016;
 
     bool loop = true;
     while (loop)

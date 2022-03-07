@@ -14,10 +14,11 @@ public:
     virtual void Update() override;
 
     // We don't use the draw function
-    virtual void Draw(SDL_Renderer* renderer) override = 0;
+    //virtual void Draw(SDL_Renderer* renderer) override;
 
     // The direction the entity `wants` to go in
     Core::Vector<float, 2> inputDirection;
+    Core::Vector<float, 2> acceleration;
 
     // The acceleration rate
     float speed;

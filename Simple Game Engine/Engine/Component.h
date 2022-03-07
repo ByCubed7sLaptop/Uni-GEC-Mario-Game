@@ -24,7 +24,7 @@ namespace Core {
         virtual void Update() = 0;
 
         // Draw method, called every frame, not abstract due to not all object needing to be drawn 
-        virtual void Draw(SDL_Renderer* renderer) = 0;
+        virtual void Draw(SDL_Renderer* renderer);// = 0;
 
     protected:
         GameObject* gameObject;

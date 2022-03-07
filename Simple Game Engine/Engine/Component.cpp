@@ -18,5 +18,7 @@ namespace Core
 		return gameObject;
 	}
 
+	void Component::Draw(SDL_Renderer* renderer) {}
+
 	//void Component::Draw(SDL_Renderer* renderer) {}
 }
