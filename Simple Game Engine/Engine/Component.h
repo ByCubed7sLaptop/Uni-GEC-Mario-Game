@@ -21,7 +21,7 @@ namespace Core {
         GameObject* Owner();
 
         // Abstract update method, called every frame.
-        virtual void Update() = 0;
+        virtual void Update(float deltaTime) = 0;
 
         // Draw method, called every frame, not abstract due to not all object needing to be drawn 
         virtual void Draw(SDL_Renderer* renderer);// = 0;

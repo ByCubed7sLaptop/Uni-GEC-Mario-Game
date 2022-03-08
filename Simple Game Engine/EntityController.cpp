@@ -6,15 +6,18 @@
 EntityController::EntityController(Core::GameObject* owner)
 	: Component(owner)
 {
-	speed = 2;
+	speed = 1;
 	weight = 1;
 	resistance = 0.9;
+
+	inputDirection = {0};
+	acceleration = {0};
 }
 
-void EntityController::Update()
+void EntityController::Update(float deltaTime)
 {
 	acceleration += inputDirection * speed;
 	//acceleration *= resistance;
 
-	gameObject->SetPosition(gameObject->Position() + Core::Vector<float, 3>({ 0.01,0.01,0 }));// acceleration.Resize<3>());
+	gameObject->SetPosition(gameObject->Position() + acceleration.Resize<3>() * deltaTime);
 }

@@ -16,7 +16,7 @@ void Sprite::Draw(SDL_Renderer* renderer)
     SDL_RenderCopy(renderer, texture->Texture(), NULL, &texture_rect);
 }
 
-void Sprite::Update()
+void Sprite::Update(float deltaTime)
 {
 }
 

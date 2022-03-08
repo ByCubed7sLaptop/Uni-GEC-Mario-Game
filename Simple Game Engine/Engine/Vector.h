@@ -127,7 +127,7 @@ namespace Core {
         Vector<T, N> operator*(const int& other)
         {
             Vector<T, N> multiVector = Vector<T, N>();
-            for (int i = 0; i < N; i++) multiVector._contents[i] = _contents[i] + other;
+            for (int i = 0; i < N; i++) multiVector._contents[i] = _contents[i] * other;
             return multiVector;
         }
 
@@ -141,7 +141,7 @@ namespace Core {
         Vector<T, N> operator*(const float& other)
         {
             Vector<T, N> multiVector = Vector<T, N>();
-            for (int i = 0; i < N; i++) multiVector._contents[i] = _contents[i] + other;
+            for (int i = 0; i < N; i++) multiVector._contents[i] = _contents[i] * other;
             return multiVector;
         }
 

@@ -19,6 +19,4 @@ namespace Core
 	}
 
 	void Component::Draw(SDL_Renderer* renderer) {}
-
-	//void Component::Draw(SDL_Renderer* renderer) {}
 }

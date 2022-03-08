@@ -62,19 +62,22 @@ int main(int argc, char* args[])
     // TODO: Move to application class
     //app->Mainloop();
 
-    Uint32 frameDelay = 0.016;
+    Uint32 frameCurrent = 0;
+    Uint32 frameLast = 0;
 
+    Uint32 frameDelay = 1;
     bool loop = true;
     while (loop)
     {
-        Uint32 frameStart = SDL_GetTicks();
+        frameCurrent = SDL_GetTicks();
+        Uint32 deltaTime = frameCurrent - frameLast;
 
         SDL_RenderClear(renderer);
 
 
         // Update the Components
         for (Core::Component* component : scene->components)
-            component->Update();
+            component->Update(deltaTime);
         // https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
 
         // Update the window
@@ -88,9 +91,8 @@ int main(int argc, char* args[])
         SDL_RenderPresent(renderer);
 
 
-        Uint32 frameTime = SDL_GetTicks() - frameStart;
-
-        if (frameDelay > frameTime) SDL_Delay(frameDelay - frameTime);
+        frameLast = frameCurrent;
+        if (frameDelay > deltaTime) SDL_Delay(frameDelay - deltaTime);
     }
 
 

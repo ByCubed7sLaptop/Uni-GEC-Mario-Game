@@ -11,7 +11,7 @@ class EntityController : public Core::Component
 public:
     EntityController(Core::GameObject* owner);
 
-    virtual void Update() override;
+    virtual void Update(float deltaTime) override;
 
     // We don't use the draw function
     //virtual void Draw(SDL_Renderer* renderer) override;

@@ -8,11 +8,12 @@ class PlayerInput : public Core::Component
 public:
 	PlayerInput(Core::GameObject* gameObject);
 
-	virtual void Update() override;
+	virtual void Update(float deltaTime) override;
 
-	void SetController(EntityController* newController);
+	PlayerInput* SetController(EntityController* newController);
 	EntityController* GetController();
 
+private:
 	EntityController* controller;
 };
 

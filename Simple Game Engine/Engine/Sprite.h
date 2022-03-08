@@ -21,7 +21,7 @@ public:
 	float rotation;
 
 	void Draw(SDL_Renderer* renderer) override;
-	void Update() override;
+	void Update(float deltaTime) override;
 
 	Sprite* SetTexture(SDLW::SDLTexture* newTexture);
 	Sprite* SetSize(Core::Vector<int, 2> newSize);

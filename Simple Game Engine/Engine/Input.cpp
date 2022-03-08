@@ -1,4 +1,5 @@
 #include "Input.h"
+#include <iostream>
 
 namespace Core {
 
@@ -6,6 +7,7 @@ namespace Core {
 
 	Input::Input()
 	{
+		std::cout << "Instance called" << std::endl;
 		instance = this;
 	}
 
