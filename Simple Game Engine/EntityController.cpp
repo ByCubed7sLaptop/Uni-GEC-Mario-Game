@@ -8,7 +8,7 @@ EntityController::EntityController(Core::GameObject* owner)
 {
 	speed = 1;
 	weight = 1;
-	resistance = 0.9;
+	resistance = 0.99f;
 
 	inputDirection = {0};
 	acceleration = {0};
@@ -16,8 +16,8 @@ EntityController::EntityController(Core::GameObject* owner)
 
 void EntityController::Update(float deltaTime)
 {
-	acceleration += inputDirection * speed;
-	//acceleration *= resistance;
+	acceleration += inputDirection * speed * 0.01f;
+	acceleration *= resistance;
 
 	gameObject->SetPosition(gameObject->Position() + acceleration.Resize<3>() * deltaTime);
 }

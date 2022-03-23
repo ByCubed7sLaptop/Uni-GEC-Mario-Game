@@ -19,7 +19,7 @@ namespace Core {
 
 	void Input::KeyChangeState(unsigned int key, int state)
 	{
-		keyboardState.emplace(key, state);
+		keyboardState[key] = state;
 		keyboardChanges.insert(key);
 	}
 

@@ -15,6 +15,7 @@
 //Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
+#include "Engine/Tilemap.h"
 
 // SEE: https://lazyfoo.net/tutorials/SDL/03_event_driven_programming/index.php
 
@@ -39,14 +40,14 @@ int main(int argc, char* args[])
 
 
     // Init the player
-    SDLW::SDLTexture* texture = new SDLW::SDLTexture(renderer);
-    texture->Load("assets/textures/WA.bmp");
+    SDLW::SDLTexture* playerTexture = new SDLW::SDLTexture(renderer);
+    playerTexture->Load("assets/textures/WA.bmp");
 
     Core::GameObject* player = new Core::GameObject(scene);
     Sprite* playerSprite = new Sprite(player);
 
     playerSprite
-        ->SetTexture(texture)
+        ->SetTexture(playerTexture)
         ->SetPivot(Core::Vector<float, 2>({ 0.5, 0.5 }))
         ->SetSize({ 100, 100 });
 
@@ -55,6 +56,19 @@ int main(int argc, char* args[])
     PlayerInput* playerInput = new PlayerInput(player);
     playerInput->SetController(playerController);
     //
+
+    // Load Tilemap
+
+    SDLW::SDLTexture* tileTexture = new SDLW::SDLTexture(renderer);
+    tileTexture->Load("assets/textures/tilesheet.bmp");
+
+    Core::GameObject* tilemapGO = new Core::GameObject(scene);
+    Tilemap* playerTilemap = new Tilemap(tilemapGO);
+    playerTilemap
+        ->SetTexture(tileTexture)
+        ->SetSize({ 100, 100 })
+        ->CreateTile({ 0, 0, 16, 16 }, 0);
+
 
 
     // --- - - - - - - - - - ---
@@ -81,6 +95,7 @@ int main(int argc, char* args[])
         // https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
 
         // Update the window
+        // Update the draw calls, ect
         loop = window->Update();
 
         // Render the Components

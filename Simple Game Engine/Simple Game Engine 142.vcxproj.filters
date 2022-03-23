@@ -42,6 +42,9 @@
     </ClCompile>
     <ClCompile Include="EntityController.cpp" />
     <ClCompile Include="PlayerInput.cpp" />
+    <ClCompile Include="Engine\Tilemap.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h">
@@ -85,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="EntityController.h" />
     <ClInclude Include="PlayerInput.h" />
+    <ClInclude Include="Engine\Tile.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Tilemap.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">

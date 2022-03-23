@@ -81,6 +81,15 @@ namespace Core {
         // Simular to the deconstructor
         void Destroy();
 
+        // The WORLD / SCENE position of the gameObject
+        Vector<float, 3> position;
+
+        // The WORLD rotation
+        float rotation;
+
+        // The WORLD / SCENE position of the gameObject
+        Vector<float, 3> scale;
+
     private:
 
         Scene* scene;
@@ -93,15 +102,5 @@ namespace Core {
 
         // The collection of compoents the gameObject has
         std::set<Component*> components;
-
-        // The WORLD / SCENE position of the gameObject
-        Vector<float, 3> position;
-
-        // The LOCAL / RELATIVE position from the gameObjects PARENT
-        // If the gameObject has no parent, this is the world position
-        Vector<float, 3> localPosition;
-
-        // The WORLD rotation
-        float rotation;
     };
 }

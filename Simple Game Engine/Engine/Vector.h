@@ -25,10 +25,9 @@ namespace Core {
     public:
         
         // - Contructors
-        Vector() : Object("Vector") { _contents = std::array<T, N>({ 0 }); }
-        //Vector(T value[N]);
-        //Vector(std::array<T, N> value);
-        Vector(std::initializer_list<T> value) : Object("Vector") { std::copy(std::begin(value), std::end(value), std::begin(_contents)); }
+        Vector() : Object("Vector"), _contents{ 0 } { _contents = std::array<T, N>({ 0 }); }
+        Vector(std::initializer_list<T> value) : Object("Vector"), _contents {0} { std::copy(std::begin(value), std::end(value), std::begin(_contents)); }
+        Vector(T value) : Object("Vector"), _contents{ value } { for (int i = 0; i < N; i++) _contents[i] = value; }
 
         // - Functionallities
 
@@ -36,17 +35,37 @@ namespace Core {
         constexpr size_t Size() { return N; }
 
         // Verbose functions
-        constexpr T Get(int index) { return _contents.at(index); }
-        constexpr T GetX() { return _contents[0]; }
-        constexpr T GetY() { return _contents[1]; }
-        constexpr T GetZ() { return _contents[2]; }
-        constexpr T GetW() { return _contents[3]; }
+        constexpr T Get(int index) { return _contents[index]; }
+        constexpr T GetX() { return Get(0); }
+        constexpr T GetY() { return Get(1); }
+        constexpr T GetZ() { return Get(2); }
+        constexpr T GetW() { return Get(3); }
+
+        void Set(int index, T value) { _contents[index] = value; }
+        void SetX(T value) { Set(0, value); }
+        void SetY(T value) { Set(1, value); }
+        void SetZ(T value) { Set(2, value); }
+        void SetW(T value) { Set(3, value); }
+
+        void Invert() {
+            for (int i = 0; i < N; i++) _contents[i] = -_contents[i];
+        }
+        void Invert(int index) { return Set(index, -Get(index)); }
 
         template<int newN>
-        Vector<T, newN> Resize(int filler = 0) {
+        constexpr Vector<T, newN> Resize(int filler = 0) {
             Vector<T, newN> newVector = Vector<T, newN>();
             for (int i = 0; i < newN; i++) {
-                newVector._contents[i] = _contents.size() < i ? _contents[i] : filler;
+                newVector._contents[i] = _contents.size() > i ? _contents[i] : filler;
+            }
+            return newVector;
+        }
+
+        template<class newT>
+        constexpr Vector<newT, N> Cast() {
+            Vector<newT, N> newVector = Vector<newT, N>();
+            for (int i = 0; i < N; i++) {
+                newVector._contents[i] = (newT)_contents[i];
             }
             return newVector;
         }
@@ -59,8 +78,6 @@ namespace Core {
             for (T& value : _contents) value++; // Increment
             return *this; // return by reference
         }
-
-        
 
         // Postfix increment
         Vector<T, N> operator++(int)
@@ -86,6 +103,34 @@ namespace Core {
         }
 
         // Adding
+        Vector<T, N>& operator+=(const Vector<T, N>& other)
+        {
+            for (int i = 0; i < N; i++) _contents[i] += other._contents[i];
+            return *this;
+        }
+
+        // Subtracting
+        Vector<T, N>& operator-=(const Vector<T, N>& other)
+        {
+            for (int i = 0; i < N; i++) _contents[i] -= other._contents[i];
+            return *this;
+        }
+
+        Vector<T, N>& operator*=(const int& other)
+        {
+            for (int i = 0; i < N; i++) _contents[i] *= other;
+            return *this;
+        }
+
+        Vector<T, N>& operator*=(const float& other)
+        {
+            for (int i = 0; i < N; i++) _contents[i] *= other;
+            return *this;
+        }
+
+
+
+        // - Adding
         Vector<T, N> operator+(const Vector<T, N>& other)
         {
             Vector<T, N> newVector = Vector<T, N>();
@@ -93,14 +138,7 @@ namespace Core {
             return newVector;
         }
 
-        // Adding
-        Vector<T, N> operator+=(const Vector<T, N>& other)
-        {
-            for (int i = 0; i < N; i++) _contents[i] = other._contents[i];
-            return *this;
-        }
-
-        // Subtracting
+        // - Subtracting
         Vector<T, N> operator-(const Vector<T, N>& other)
         {
             Vector<T, N> newVector = Vector<T, N>();
@@ -108,49 +146,61 @@ namespace Core {
             return newVector;
         }
 
-        // Subtracting
-        Vector<T, N> operator-=(const Vector<T, N>& other)
-        {
-            for (int i = 0; i < N; i++) _contents[i] -= other._contents[i];
-            return *this;
-        }
-
-        // Multiplying
+        // - Multiplying
         Vector<T, N> operator*(const Vector<T, N>& other)
         {
-            for (int i = 0; i < N; i++) _contents[i] *= other._contents[i];
-            return *this;
+            Vector<T, N> newVector = Vector<T, N>();
+            for (int i = 0; i < N; i++) newVector._contents[i] = _contents[i] * other._contents[i];
+            return newVector;
         }
-
 
         // Ints
         Vector<T, N> operator*(const int& other)
         {
-            Vector<T, N> multiVector = Vector<T, N>();
-            for (int i = 0; i < N; i++) multiVector._contents[i] = _contents[i] * other;
-            return multiVector;
-        }
-
-        Vector<T, N> operator*=(const int& other)
-        {
-            for (int i = 0; i < N; i++) _contents[i] *= other;
-            return *this;
+            Vector<T, N> newVector = Vector<T, N>();
+            for (int i = 0; i < N; i++) newVector._contents[i] = _contents[i] * other;
+            return newVector;
         }
 
         // Floats
         Vector<T, N> operator*(const float& other)
         {
-            Vector<T, N> multiVector = Vector<T, N>();
-            for (int i = 0; i < N; i++) multiVector._contents[i] = _contents[i] * other;
-            return multiVector;
+            Vector<T, N> newVector = Vector<T, N>();
+            for (int i = 0; i < N; i++) newVector._contents[i] = _contents[i] * other;
+            return newVector;
         }
 
-        Vector<T, N> operator*=(const float& other)
+        // Divide
+        Vector<T, N> operator/(const Vector<T, N>& other)
         {
-            for (int i = 0; i < N; i++) _contents[i] *= other;
-            return *this;
+            Vector<T, N> newVector = Vector<T, N>();
+            for (int i = 0; i < N; i++) newVector._contents[i] = _contents[i] / other._contents[i];
+            return newVector;
         }
 
+        // Divide
+        Vector<T, N> operator<(const Vector<T, N>& other)
+        {
+            Vector<T, N> newVector = Vector<T, N>();
+            for (int i = 0; i < N; i++) newVector._contents[i] = _contents[i] / other._contents[i];
+            return newVector;
+        }
+
+        // Equal
+        Vector<T, N>& operator=(const Vector<T, N>& other)
+        {
+            Vector<T, N> newVector = Vector<T, N>();
+            for (int i = 0; i < N; i++) _contents[i] = other._contents[i];
+            return newVector;
+        }
+
+
+        bool operator <(const Vector<T, N>& arg1, const Vector<T, N>& arg2) const
+        {
+            return arg1.x < arg2.x;
+        }
+
+        // *Should* be private, but it's much easier to reference this when it's not-
         std::array<T, N> _contents;
     private:
     };
