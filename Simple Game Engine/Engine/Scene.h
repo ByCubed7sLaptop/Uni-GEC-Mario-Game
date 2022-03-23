@@ -24,8 +24,11 @@ namespace Core {
 		std::set<GameObject*> gameObjects;
 		std::set<Component*> components;
 
+		bool Update(Uint32 deltaTime);
 		bool Render(SDL_Renderer* renderer);
-		
+
+		GameObject* createGameObject();
+
 		bool Load(std::string filepath);
 		bool Save(std::string filepath);
 

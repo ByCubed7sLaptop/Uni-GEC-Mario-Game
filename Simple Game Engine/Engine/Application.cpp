@@ -1,6 +1,8 @@
 #include "Application.h"
 
 #include "SDLWindow.h"
+#include "Component.h"
+#include "Scene.h"
 
 namespace Core {
 
@@ -31,7 +33,7 @@ namespace Core {
 	void Application::Update()
 	{
 		// Update the scene
-		
+
 		// Draw the scene
 
 		// Update the window
@@ -43,11 +45,43 @@ namespace Core {
 
 	void Application::Mainloop()
 	{
-		while (true) {
-			Update();
+		SDL_Renderer* renderer = window->Renderer();
 
-			// Should we exit?
-			if (!loop) break;
+		Uint32 frameCurrent = 0;
+		Uint32 frameLast = 0;
+
+		Uint32 frameDelay = 1;
+		bool loop = true;
+		while (loop)
+		{
+			frameCurrent = SDL_GetTicks();
+			Uint32 deltaTime = frameCurrent - frameLast;
+
+			SDL_RenderClear(renderer);
+
+			// Update the Components
+			for (Component* component : scene->components)
+				component->Update(deltaTime);
+			// https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
+
+			// Update the window
+			loop = window->Update();
+
+			// Render the Components
+			for (Component* component : scene->components)
+				component->Draw(renderer);
+
+			// Swap the buffer
+			SDL_RenderPresent(renderer);
+
+
+			frameLast = frameCurrent;
+			if (frameDelay > deltaTime) SDL_Delay(frameDelay - deltaTime);
 		}
+
+		SDL_DestroyRenderer(renderer);
+
+		//Quit SDL subsystems
+		SDL_Quit();
 	}
 }

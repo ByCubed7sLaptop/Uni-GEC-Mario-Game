@@ -14,12 +14,34 @@ namespace Core {
         components = std::set<Component*>();
     }
 
+    bool Scene::Update(Uint32 deltaTime)
+    {
+        for (Component* component : components)
+            component->Update(deltaTime);
+
+        return true;
+    }
+
     bool Scene::Render(SDL_Renderer* renderer)
     {
         SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-        
+
+        for (Component* component : components)
+            component->Draw(renderer);
+
         return true;
     }
+
+    GameObject* Scene::createGameObject()
+    {
+        GameObject* newGameObject = new GameObject(this);
+        gameObjects.insert(newGameObject);
+        return newGameObject;
+    }
+
+
+
+    // TODO: Serailization, storing and loading objects, ect
 
     bool Scene::Load(std::string filepath)
     {

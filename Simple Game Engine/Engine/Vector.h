@@ -11,7 +11,7 @@
 * Templated classes and functions are not instantiated until they are used, typically in a separate .cpp file (e.g. the program source). 
 * When the template is used, the compiler needs the full code for that function to be able to build the correct function with the appropriate type. 
 * However, in this case the code for that function is detailed in the template's source file and hence unavailable.
- - dlanod
+* - dlanod
 */
 
 // One solution would to be to also include the .cpp file. However, this may send the wrong message.
@@ -194,10 +194,23 @@ namespace Core {
             return newVector;
         }
 
-
-        bool operator <(const Vector<T, N>& arg1, const Vector<T, N>& arg2) const
+        bool operator< (const Vector<T, N>& other) const
         {
-            return arg1.x < arg2.x;
+            for (int i = 0; i < N; i++)
+            {
+                if (_contents[i] < other._contents[i]) return true;
+                if (_contents[i] == other._contents[i]) continue;
+                return false;
+            }
+        }
+        bool operator> (const Vector<T, N>& other) const
+        {
+            for (int i = 0; i < N; i++)
+            {
+                if (_contents[i] > other._contents[i]) return true;
+                if (_contents[i] == other._contents[i]) continue;
+                return false;
+            }
         }
 
         // *Should* be private, but it's much easier to reference this when it's not-

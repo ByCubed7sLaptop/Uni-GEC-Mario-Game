@@ -34,9 +34,10 @@ int main(int argc, char* args[])
     SDLW::SDLWindow* window = new SDLW::SDLWindow("Mario");
     SDL_Renderer* renderer = window->Renderer();
     Core::Application* app = new Core::Application(window);
-    Core::Scene* scene = new Core::Scene();
     
     // CREATE THE SCENE
+    Core::Scene* scene = new Core::Scene();
+    app->Load(scene);
 
 
     // Init the player
@@ -71,51 +72,8 @@ int main(int argc, char* args[])
 
 
 
-    // --- - - - - - - - - - ---
-
-    // TODO: Move to application class
-    //app->Mainloop();
-
-    Uint32 frameCurrent = 0;
-    Uint32 frameLast = 0;
-
-    Uint32 frameDelay = 1;
-    bool loop = true;
-    while (loop)
-    {
-        frameCurrent = SDL_GetTicks();
-        Uint32 deltaTime = frameCurrent - frameLast;
-
-        SDL_RenderClear(renderer);
-
-
-        // Update the Components
-        for (Core::Component* component : scene->components)
-            component->Update(deltaTime);
-        // https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
-
-        // Update the window
-        // Update the draw calls, ect
-        loop = window->Update();
-
-        // Render the Components
-        for (Core::Component* component : scene->components)
-            component->Draw(renderer);
-
-        // Swap the buffer
-        SDL_RenderPresent(renderer);
-
-
-        frameLast = frameCurrent;
-        if (frameDelay > deltaTime) SDL_Delay(frameDelay - deltaTime);
-    }
-
-
+    app->Mainloop();
     delete app;
-    SDL_DestroyRenderer(renderer);
-
-    //Quit SDL subsystems
-    SDL_Quit();
 
     return 0;
 }
