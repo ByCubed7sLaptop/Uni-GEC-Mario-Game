@@ -7,7 +7,7 @@ namespace Core {
 
 	Input::Input()
 	{
-		std::cout << "Instance called" << std::endl;
+		//std::cout << "Instance called" << std::endl;
 		instance = this;
 	}
 

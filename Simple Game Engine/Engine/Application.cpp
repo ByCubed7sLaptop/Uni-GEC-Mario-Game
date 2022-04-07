@@ -6,7 +6,7 @@
 
 namespace Core {
 
-	Application::Application(SDLW::SDLWindow* bindWindow)
+	Application::Application(SDLW::Window* bindWindow)
 	{
 		scene = nullptr;
 		window = bindWindow;
@@ -57,11 +57,15 @@ namespace Core {
 			frameCurrent = SDL_GetTicks();
 			Uint32 deltaTime = frameCurrent - frameLast;
 
+			// Reset the render draw color
+			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+
 			SDL_RenderClear(renderer);
 
 			// Update the Components
-			for (Component* component : scene->components)
-				component->Update(deltaTime);
+			//for (Component* component : scene->components)
+			//	component->Update(deltaTime);
+			scene->Update(deltaTime);
 			// https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
 
 			// Update the window

@@ -7,20 +7,22 @@
 #include "Vector.h"
 #include "Input.h"
 
-namespace SDLW 
+namespace SDLW
 {
-	class SDLWindow
+	class Window
 	{
 	public:
-		SDLWindow(std::string name);
-		~SDLWindow();
+		Window(std::string name);
+		~Window();
 
 		bool Update();
 
+		// Gets
 		Core::Vector<int, 2> Size();
-		void SetSize(Core::Vector<int, 2> newSize);
-
 		SDL_Renderer* Renderer();
+
+		// Sets
+		void SetSize(Core::Vector<int, 2> newSize);
 
 	protected:
 		std::string title;

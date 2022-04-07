@@ -40,9 +40,20 @@
     <ClCompile Include="Main.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="EntityController.cpp" />
-    <ClCompile Include="PlayerInput.cpp" />
     <ClCompile Include="Engine\Tilemap.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInput.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityController.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Collider.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CircularLinkedList.cpp" />
+    <ClCompile Include="Engine\Collision.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,12 +97,23 @@
     <ClInclude Include="Engine\Window.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="EntityController.h" />
-    <ClInclude Include="PlayerInput.h" />
     <ClInclude Include="Engine\Tile.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Tilemap.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInput.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityController.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Collider.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CircularLinkedList.h" />
+    <ClInclude Include="Engine\Collision.h">
       <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>

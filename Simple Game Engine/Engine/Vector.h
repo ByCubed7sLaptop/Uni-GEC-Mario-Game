@@ -4,6 +4,7 @@
 
 #include <array>
 #include <algorithm>
+#include <iostream>
 
 // https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
 
@@ -25,9 +26,27 @@ namespace Core {
     public:
         
         // - Contructors
-        Vector() : Object("Vector"), _contents{ 0 } { _contents = std::array<T, N>({ 0 }); }
-        Vector(std::initializer_list<T> value) : Object("Vector"), _contents {0} { std::copy(std::begin(value), std::end(value), std::begin(_contents)); }
-        Vector(T value) : Object("Vector"), _contents{ value } { for (int i = 0; i < N; i++) _contents[i] = value; }
+        Vector() : Object("Vector"), _contents{ 0 }
+        { 
+            _contents = std::array<T, N>({ 0 });
+        }
+        
+        Vector(T value) : Object("Vector"), _contents{ value }
+        { 
+            for (int i = 0; i < N; i++) 
+                _contents[i] = value; 
+        }
+
+        Vector(std::initializer_list<T> value) : Object("Vector"), _contents{ 0 }
+        {
+            const T* it = value.begin();
+            const T* const end = value.end();
+
+            for (int i = 0; it != end; ++it, ++i) {
+                _contents[i] = *it;
+            }
+            //std::copy(std::begin(value), std::end(value), std::begin(_contents));
+        }
 
         // - Functionallities
 
@@ -35,11 +54,31 @@ namespace Core {
         constexpr size_t Size() { return N; }
 
         // Verbose functions
-        constexpr T Get(int index) { return _contents[index]; }
-        constexpr T GetX() { return Get(0); }
-        constexpr T GetY() { return Get(1); }
-        constexpr T GetZ() { return Get(2); }
-        constexpr T GetW() { return Get(3); }
+        constexpr T& Get(int index) { return _contents[index]; }
+        constexpr T& X() { return Get(0); }
+        constexpr T& Y() { return Get(1); }
+        constexpr T& Z() { return Get(2); }
+        constexpr T& W() { return Get(3); }
+
+        // Const Verbose functions
+        constexpr const T& Get(int index) const { return _contents[index]; }
+        constexpr const T& X() const { return Get(0); }
+        constexpr const T& Y() const { return Get(1); }
+        constexpr const T& Z() const { return Get(2); }
+        constexpr const T& W() const { return Get(3); }
+
+
+        // https://stackoverflow.com/questions/856542/elegant-solution-to-duplicate-const-and-non-const-getters
+        //const T& get(int index) const
+        //{
+        //    //non-trivial work
+        //    return _contents[index];
+        //}
+
+        //int& get(int index)
+        //{
+        //    return const_cast<T&>(const_cast<const Vector*>(this)->get(index));
+        //}
 
         void Set(int index, T value) { _contents[index] = value; }
         void SetX(T value) { Set(0, value); }
@@ -67,6 +106,19 @@ namespace Core {
             for (int i = 0; i < N; i++) {
                 newVector._contents[i] = (newT)_contents[i];
             }
+            return newVector;
+        }
+
+        template<int A, int B>
+        static Vector<T, A+B> Append(Vector<T, A> first, Vector<T, B> second) {
+            Vector<T, A + B> newVector = Vector<T, A + B>();
+
+            for (int i = 0; i < A; i++)
+                newVector._contents[i] = first._contents[i];
+
+            for (int i = 0; i < B; i++)
+                newVector._contents[A+i] = second._contents[i];
+
             return newVector;
         }
 
@@ -113,6 +165,13 @@ namespace Core {
         Vector<T, N>& operator-=(const Vector<T, N>& other)
         {
             for (int i = 0; i < N; i++) _contents[i] -= other._contents[i];
+            return *this;
+        }
+
+        // Multiplying
+        Vector<T, N>& operator*=(const Vector<T, N>& other)
+        {
+            for (int i = 0; i < N; i++) _contents[i] *= other._contents[i];
             return *this;
         }
 
@@ -178,21 +237,14 @@ namespace Core {
             return newVector;
         }
 
-        // Divide
-        Vector<T, N> operator<(const Vector<T, N>& other)
-        {
-            Vector<T, N> newVector = Vector<T, N>();
-            for (int i = 0; i < N; i++) newVector._contents[i] = _contents[i] / other._contents[i];
-            return newVector;
-        }
-
         // Equal
-        Vector<T, N>& operator=(const Vector<T, N>& other)
-        {
-            Vector<T, N> newVector = Vector<T, N>();
-            for (int i = 0; i < N; i++) _contents[i] = other._contents[i];
-            return newVector;
-        }
+        //Vector<T, N>& operator=(const Vector<T, N>& other)
+        //{
+        //    Vector<T, N> newVector = Vector<T, N>();
+        //    for (int i = 0; i < N; i++) _contents[i] = other._contents[i];
+        //    return newVector;
+        //}
+
 
         bool operator< (const Vector<T, N>& other) const
         {
@@ -202,6 +254,7 @@ namespace Core {
                 if (_contents[i] == other._contents[i]) continue;
                 return false;
             }
+            return false;
         }
         bool operator> (const Vector<T, N>& other) const
         {
@@ -211,10 +264,40 @@ namespace Core {
                 if (_contents[i] == other._contents[i]) continue;
                 return false;
             }
+            return false;
         }
+
+        // Casting to string
+
+        operator std::string() {
+            std::string string;
+
+            for (int i = 0; i < N; i++) {
+                string += std::to_string(_contents[i]);
+                if (i != N - 1) string += ", ";
+            }
+
+            return string;
+        }
+
+        friend std::ostream& operator<< (std::ostream& os, const Vector<T, N>& other)
+        {
+            for (int i = 0; i < N; i++) {
+                os << std::to_string(other._contents[i]);
+                if (i != N - 1) os << ", ";
+            }
+            return os;
+        }
+
+        /*std::string operator<< (const std::string& other) const
+        {
+            return other + operator std::string();
+        }*/
+
 
         // *Should* be private, but it's much easier to reference this when it's not-
         std::array<T, N> _contents;
+        T x; T y; T z; T w;
     private:
     };
 }

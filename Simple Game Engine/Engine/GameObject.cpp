@@ -72,17 +72,17 @@ namespace Core {
     {
     }
 
-    Vector<float, 3> GameObject::Position() { return position; }
-    void GameObject::SetPosition(Vector<float, 3> newPosition) { position = newPosition; }
+    Vector<float, 2> GameObject::Position() { return position; }
+    void GameObject::SetPosition(Vector<float, 2> newPosition) { position = newPosition; }
 
-    Vector<float, 3> GameObject::LocalPosition()
+    Vector<float, 2> GameObject::LocalPosition()
     {
         if (parent == nullptr) return position;
 
         return { 0 };//parent->Position() - position;
     }
 
-    void GameObject::SetLocalPosition(Vector<float, 3> newLocalPosition)
+    void GameObject::SetLocalPosition(Vector<float, 2> newLocalPosition)
     {
         //position = parent->Position() + newLocalPosition;
     }

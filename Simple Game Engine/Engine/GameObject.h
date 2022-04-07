@@ -60,16 +60,16 @@ namespace Core {
         void RemoveComponent(Component* component);
 
         // Returns the WORLD position
-        Vector<float, 3> Position();
+        Vector<float, 2> Position();
         
         // Sets the WORLD position
-        void SetPosition(Vector<float, 3> newPosition);
+        void SetPosition(Vector<float, 2> newPosition);
 
         // Returns the LOCAL position
-        Vector<float, 3> LocalPosition();
+        Vector<float, 2> LocalPosition();
 
         // Sets the LOCAL position
-        void SetLocalPosition(Vector<float, 3> newLocalPosition);
+        void SetLocalPosition(Vector<float, 2> newLocalPosition);
 
         // Returns the WORLD rotation
         float Rotation();
@@ -82,13 +82,13 @@ namespace Core {
         void Destroy();
 
         // The WORLD / SCENE position of the gameObject
-        Vector<float, 3> position;
+        Vector<float, 2> position;
 
         // The WORLD rotation
         float rotation;
 
         // The WORLD / SCENE position of the gameObject
-        Vector<float, 3> scale;
+        Vector<float, 2> scale;
 
     private:
 

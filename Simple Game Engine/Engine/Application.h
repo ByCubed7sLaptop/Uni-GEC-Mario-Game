@@ -9,7 +9,7 @@
 #pragma once
 
 // Forward Declaration
-namespace SDLW { class SDLWindow; }
+namespace SDLW { class Window; }
 
 namespace Core {
 
@@ -19,7 +19,7 @@ namespace Core {
 
 	class Application {
 	public:
-		Application(SDLW::SDLWindow* bindWindow);
+		Application(SDLW::Window* bindWindow);
 		~Application();
 
 		void Load(Scene* newScene);
@@ -32,7 +32,7 @@ namespace Core {
 
 	private:
 		bool loop;
-		SDLW::SDLWindow* window;
+		SDLW::Window* window;
 		Scene* scene;
 	};
 }

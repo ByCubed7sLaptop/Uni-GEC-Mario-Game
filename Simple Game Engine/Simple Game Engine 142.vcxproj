@@ -141,7 +141,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CircularLinkedList.h" />
     <ClInclude Include="Engine\Application.h" />
+    <ClInclude Include="Engine\Collider.h" />
+    <ClInclude Include="Engine\Collision.h" />
     <ClInclude Include="Engine\Component.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
@@ -160,7 +163,10 @@
     <ClInclude Include="PlayerInput.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CircularLinkedList.cpp" />
     <ClCompile Include="Engine\Application.cpp" />
+    <ClCompile Include="Engine\Collider.cpp" />
+    <ClCompile Include="Engine\Collision.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Input.cpp" />

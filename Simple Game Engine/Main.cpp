@@ -9,13 +9,15 @@
 #include "Engine/GameObject.h"
 #include "Engine/Component.h"
 #include "Engine/Sprite.h"
+#include "Engine/Tilemap.h"
+#include "Engine/Collider.h"
+
 #include "EntityController.h"
 #include "PlayerInput.h"
 
 //Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
-#include "Engine/Tilemap.h"
 
 // SEE: https://lazyfoo.net/tutorials/SDL/03_event_driven_programming/index.php
 
@@ -31,7 +33,7 @@ int main(int argc, char* args[])
 
 
 
-    SDLW::SDLWindow* window = new SDLW::SDLWindow("Mario");
+    SDLW::Window* window = new SDLW::Window("Mario");
     SDL_Renderer* renderer = window->Renderer();
     Core::Application* app = new Core::Application(window);
     
@@ -45,14 +47,23 @@ int main(int argc, char* args[])
     playerTexture->Load("assets/textures/WA.bmp");
 
     Core::GameObject* player = new Core::GameObject(scene);
-    Sprite* playerSprite = new Sprite(player);
+    player->SetPosition({ 336, 128 });
+    //player->SetPosition({ 0, 0 });
 
+    Sprite* playerSprite = new Sprite(player);
     playerSprite
         ->SetTexture(playerTexture)
         ->SetPivot(Core::Vector<float, 2>({ 0.5, 0.5 }))
-        ->SetSize({ 100, 100 });
+        ->SetSize({ 32, 32 });
+
+    Core::Collider* playerCollider = new Core::Collider(player);
+    playerCollider->kinematic = true;
+    playerCollider->aabb = 31;
+    playerCollider->offset = playerSprite->size.Cast<float>() * playerSprite->pivot * -1;
 
     EntityController* playerController = new EntityController(player);
+    playerController->SetSpeed(0.5f);
+    playerController->LinkCollider(playerCollider);
     
     PlayerInput* playerInput = new PlayerInput(player);
     playerInput->SetController(playerController);
@@ -64,13 +75,34 @@ int main(int argc, char* args[])
     tileTexture->Load("assets/textures/tilesheet.bmp");
 
     Core::GameObject* tilemapGO = new Core::GameObject(scene);
-    Tilemap* playerTilemap = new Tilemap(tilemapGO);
-    playerTilemap
+
+    Tilemap* tilemapTilemap = new Tilemap(tilemapGO);
+    tilemapTilemap
         ->SetTexture(tileTexture)
-        ->SetSize({ 100, 100 })
-        ->CreateTile({ 0, 0, 16, 16 }, 0);
+        ->SetSize({ 32, 32 })
+        ->CreateTile({ 0, 0, 16, 16 }, 0)
+        ->CreateTile({ 16, 0, 16, 16 }, 1)
+        ->CreateTile({ 32, 0, 16, 16 }, 2);
+
+    for (int i = 0; i < 20; ++i) {
+        tilemapTilemap->SetTile({ i,13 }, 0);
+        tilemapTilemap->SetTile({ i,14 }, 2);
+    }
+
+    Core::Collider* tilemapCollider = new Core::Collider(tilemapGO);
+    tilemapCollider->aabb = { 320 * 2, 64 };
+    tilemapCollider->offset = { 0, 32 * 13 };
 
 
+    Core::Collider* tilemapCollider2 = new Core::Collider(tilemapGO);
+    tilemapCollider2->aabb = { 320, 64 };
+    tilemapCollider2->offset = { 64, 32 * 8 };
+
+    Core::Collider* tilemapCollider3 = new Core::Collider(tilemapGO);
+    tilemapCollider3->aabb = { 64, 32*2 };
+    tilemapCollider3->offset = { 64, 32 * 10 };
+
+    //
 
     app->Mainloop();
     delete app;

@@ -10,13 +10,13 @@ namespace Core
 		: Object("Component")
 	{
 		gameObject = owner;
-		owner->GetScene()->components.insert(this);
+
+		scene = owner->GetScene();
+		scene->components.insert(this);
 	}
 
-	GameObject* Component::Owner()
-	{
-		return gameObject;
-	}
+	GameObject* Component::Owner() { return gameObject; }
+	Scene* Component::GetScene() { return scene; }
 
 	void Component::Draw(SDL_Renderer* renderer) {}
 }
