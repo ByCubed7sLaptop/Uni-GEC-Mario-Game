@@ -1,3 +1,6 @@
+#pragma once
+
+# include "Vector.h"
 
 // STD
 #include <string>
@@ -19,7 +22,7 @@ namespace Core {
 
 	class Application {
 	public:
-		Application(SDLW::Window* bindWindow);
+		Application(std::string name);
 		~Application();
 
 		void Load(Scene* newScene);
@@ -30,9 +33,15 @@ namespace Core {
 		// While-loops the Update function until loop is false
 		void Mainloop();
 
+		SDLW::Window* Window();
+
+		// TODO: Consider transfering into a static class
+		static Application* instance;
+
 	private:
 		bool loop;
 		SDLW::Window* window;
 		Scene* scene;
+
 	};
 }

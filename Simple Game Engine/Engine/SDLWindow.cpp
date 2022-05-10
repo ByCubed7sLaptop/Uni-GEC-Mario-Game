@@ -31,24 +31,16 @@ namespace SDLW
         // Get window surface
         surface = SDL_GetWindowSurface(window);
 
-
-        // Fill the surface white
-        //SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0xFF, 0xFF, 0xFF));
-        //
-        // Update the surface
-        //SDL_UpdateWindowSurface(window);
-
-        // Wait two seconds
-        //SDL_Delay(2000);
-
-        input = new Core::Input();
     }
 
     Window::~Window()
     {
+        SDL_DestroyRenderer(renderer);
+        renderer = nullptr;
         SDL_DestroyWindow(window);
         window = nullptr;
         surface = nullptr;
+
     }
 
     SDL_Renderer* Window::Renderer()
@@ -56,7 +48,9 @@ namespace SDLW
         return SDL_GetRenderer(window);
     }
 
-    bool Window::Update() {
+    bool Window::Update() 
+    {
+        Core::Input::Tick();
 
         // Poll events
         SDL_Event event;
@@ -65,13 +59,13 @@ namespace SDLW
             switch (event.type) {
             case SDL_KEYDOWN:
                 //std::cout << "Key press detected" << std::endl;
-                Core::Input::instance->KeyChangeState(event.key.keysym.sym, 1);
+                Core::Input::KeyChangeState(event.key.keysym.sym, 1);
                 //std::cout << "event.key.keysym.sym = " << event.key.keysym.sym << std::endl;
                 break;
 
             case SDL_KEYUP:
                 //std::cout << "Key release detected" << std::endl;
-                Core::Input::instance->KeyChangeState(event.key.keysym.sym, 0);
+                Core::Input::KeyChangeState(event.key.keysym.sym, 0);
                 break;
 
             case SDL_QUIT:
@@ -82,6 +76,8 @@ namespace SDLW
             }
         }
 
+        SDL_SetRenderDrawColor(renderer, backgroundColour.X(), backgroundColour.Y(), backgroundColour.Z(), 0);
+
         return true;
     }
 
@@ -91,8 +87,17 @@ namespace SDLW
         return size;
     }
 
+    int& Window::Width() { return size.X(); }
+    int& Window::Height() { return size.Y(); }
+
     void Window::SetSize(Core::Vector<int, 2> newSize)
     {
         size = newSize;
+        SDL_SetWindowSize(window, newSize.X(), newSize.Y());
+    }
+
+    void Window::SetBackgroundColour(Core::RGB colour)
+    {
+        backgroundColour = colour;
     }
 }

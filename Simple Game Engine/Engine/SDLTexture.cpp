@@ -9,6 +9,7 @@ namespace SDLW {
 	{
 		this->renderer = renderer;
 		texture = nullptr;
+		height, width = 0;
 	}
 
 	SDLTexture::~SDLTexture()
@@ -29,13 +30,15 @@ namespace SDLW {
 		}
 
 		// Set a transparency colour
-		Uint32 colorkey = SDL_MapRGB(surface->format, 255, 255, 255);
+		Uint32 colorkey = SDL_MapRGB(surface->format, 0, 0, 0);
 		SDL_SetColorKey(surface, SDL_TRUE, colorkey);
 
 		// Since SDL_Surface is just the raw pixel data, it is not optimized in any way and should be avoided when rendering.
 		// Luckily, you can simply convert an SDL_Surface to SDL_Texture using
 		texture = SDL_CreateTextureFromSurface(renderer, surface);
 		
+		SDL_QueryTexture(texture, NULL, NULL, &width, &height);
+
 		SDL_FreeSurface(surface);
 		return true;
 	}
@@ -43,5 +46,15 @@ namespace SDLW {
 	SDL_Texture* SDLTexture::Texture()
 	{
 		return texture;
+	}
+
+	int SDLTexture::Width()
+	{
+		return width;
+	}
+
+	int SDLTexture::Height()
+	{
+		return height;
 	}
 }

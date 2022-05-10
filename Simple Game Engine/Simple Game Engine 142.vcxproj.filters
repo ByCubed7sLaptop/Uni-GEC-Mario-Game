@@ -56,6 +56,18 @@
     <ClCompile Include="Engine\Collision.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="EntityGrounded.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuController.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GoombaAI.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h">
@@ -116,6 +128,36 @@
     <ClInclude Include="Engine\Collision.h">
       <Filter>Engine</Filter>
     </ClInclude>
+    <ClInclude Include="EntityGrounded.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuController.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Animation.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FiniteStateMachine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AnimatedSprite.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioAnimations.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GoombaAI.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GoombaAnimations.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
@@ -127,5 +169,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

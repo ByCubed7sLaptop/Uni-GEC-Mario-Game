@@ -20,10 +20,14 @@ namespace SDLW {
 
 		SDL_Texture* Texture();
 
+		int Width();
+		int Height();
+
 	private:
 		// The renderer reference
 		SDL_Renderer* renderer;
 		SDL_Texture* texture;
+		int width, height;
 
 	};
 }

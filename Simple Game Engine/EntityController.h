@@ -20,6 +20,7 @@ public:
 
     EntityController* SetSpeed(float newSpeed);
 
+
     // The direction the entity `wants` to go in
     Core::Vector<float, 2> inputDirection;
 

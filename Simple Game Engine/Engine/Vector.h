@@ -2,6 +2,7 @@
 
 #include "Object.h"
 
+#include <stdint.h>
 #include <array>
 #include <algorithm>
 #include <iostream>
@@ -300,4 +301,14 @@ namespace Core {
         T x; T y; T z; T w;
     private:
     };
+
+    // Some Cool sugar syntax typedefs
+
+    typedef class Vector<int, 2> Vector2Int;
+    typedef class Vector<float, 2> Vector2Float;
+
+    // BUG: Uint8 isnt accepted here so we use uint8_t from stdint
+    typedef class Vector<uint8_t, 3> RGB;
+    typedef class Vector<uint8_t, 4> RGBA;
 }
+

@@ -6,11 +6,15 @@
 
 namespace Core {
 
-	Application::Application(SDLW::Window* bindWindow)
+	Application* Application::instance = nullptr;
+
+	Application::Application(std::string name)
 	{
+		window = new SDLW::Window(name);
 		scene = nullptr;
-		window = bindWindow;
 		loop = true;
+
+		Application::instance = this;
 	}
 
 	Application::~Application()
@@ -24,6 +28,8 @@ namespace Core {
 	void Application::Load(Scene* newScene)
 	{
 		// Unload the scene, ect
+
+		window->SetBackgroundColour({ 0, 0, 0 });
 
 		scene = newScene;
 
@@ -58,22 +64,19 @@ namespace Core {
 			Uint32 deltaTime = frameCurrent - frameLast;
 
 			// Reset the render draw color
-			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-
 			SDL_RenderClear(renderer);
 
-			// Update the Components
-			//for (Component* component : scene->components)
-			//	component->Update(deltaTime);
-			scene->Update(deltaTime);
-			// https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
 
-			// Update the window
+			// Update the window, poll events, ect
 			loop = window->Update();
 
-			// Render the Components
-			for (Component* component : scene->components)
-				component->Draw(renderer);
+			if (scene != nullptr) {
+				scene->Update(deltaTime);
+
+				// Render the Components
+				for (Component* component : scene->components)
+					component->Draw(renderer);
+			}
 
 			// Swap the buffer
 			SDL_RenderPresent(renderer);
@@ -83,9 +86,9 @@ namespace Core {
 			if (frameDelay > deltaTime) SDL_Delay(frameDelay - deltaTime);
 		}
 
-		SDL_DestroyRenderer(renderer);
-
-		//Quit SDL subsystems
-		SDL_Quit();
+	}
+	SDLW::Window* Application::Window()
+	{
+		return window;
 	}
 }

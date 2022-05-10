@@ -22,6 +22,7 @@ namespace Core {
 
     bool Scene::Update(Uint32 deltaTime)
     {
+		// https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
         for (Component* component : components)
             component->Update(deltaTime);
 
@@ -34,7 +35,7 @@ namespace Core {
         for (Component* component : components)
             component->Draw(renderer);
 
-        SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+        //SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
         return true;
     }
 
@@ -185,7 +186,6 @@ namespace Core {
         gameObjects.insert(newGameObject);
         return newGameObject;
     }
-
 
 
     // TODO: Serailization, storing and loading objects, ect

@@ -100,7 +100,7 @@ namespace Core {
             // [a] - [b]   [d]
 
             // POSSIBLE BUG:
-            //    Do we delete B value?
+            //    Do we delete Bs value?
 
             // Instead of deleting this node 
             // Move the data from the next node here

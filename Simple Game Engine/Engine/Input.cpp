@@ -1,18 +1,15 @@
 #include "Input.h"
 #include <iostream>
 
-namespace Core {
-
-	Input* Input::instance = nullptr;
-
-	Input::Input()
-	{
-		//std::cout << "Instance called" << std::endl;
-		instance = this;
-	}
+namespace Core 
+{
+	std::map<unsigned int, int> Input::keyboardState = std::map<unsigned int, int>();
+	std::set<unsigned int> Input::keyboardChanges = std::set<unsigned int>();
 
 	void Input::Tick()
 	{
+		//std::cout << "Tick" << std::endl;
+
 		// Clear the changes
 		keyboardChanges = std::set<unsigned int>();
 	}

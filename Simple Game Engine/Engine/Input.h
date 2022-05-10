@@ -8,36 +8,37 @@ namespace Core {
 	// Forward declaration
 	class Window;
 
-	class Input
+	class Input final
 	{
 	public:
-		static Input* instance;
-
-		Input();
 		
-		void Tick();
+		// Disallow creating an instance of this object
+		Input() = delete;
+
+		static void Tick();
 
 		// Change a state of a key
-		void KeyChangeState(unsigned int key, int state);
+		static void KeyChangeState(unsigned int key, int state);
 
 		// - States
 
 		// Is the key currently pressed
-		bool KeyDown(unsigned int key);
+		static bool KeyDown(unsigned int key);
 
 		// Was the key pressed ON THIS FRAME
-		bool OnKeyDown(unsigned int key);
+		static bool OnKeyDown(unsigned int key);
 
 		// Is the key currently released
-		bool KeyUp(unsigned int key);
+		static bool KeyUp(unsigned int key);
 
 		// Was the key released ON THIS FRAME
-		bool OnKeyUp(unsigned int key);
+		static bool OnKeyUp(unsigned int key);
 
 	private:
+
 		// Keyboard state.
-		std::map<unsigned int, int> keyboardState;
-		std::set<unsigned int> keyboardChanges;
+		static std::map<unsigned int, int> keyboardState;
+		static std::set<unsigned int> keyboardChanges;
 
 
 		// SDL_JoyButtonEvent

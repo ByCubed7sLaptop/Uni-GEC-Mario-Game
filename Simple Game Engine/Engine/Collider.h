@@ -33,6 +33,7 @@ namespace Core {
 		bool IsAsleep();
 		bool IsKinematic();
 
+		Collider* AddForce(Core::Vector<float, 2> force);
 		// Collision points
 		std::vector<Vector<float, 2>> points;
 

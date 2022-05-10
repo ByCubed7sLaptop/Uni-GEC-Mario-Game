@@ -23,7 +23,9 @@ void EntityController::Update(float deltaTime)
 	collider->velocity += inputDirection * speed * 0.01f;
 
 	// 'Jump'
-	if (inputDirection.Y() == -1)  collider->velocity.SetY(-1);
+	//if (inputDirection.Y() == -1) {
+		//collider->velocity.SetY(-1); 
+	//}
 }
 
 void EntityController::LinkCollider(Core::Collider* _collider)

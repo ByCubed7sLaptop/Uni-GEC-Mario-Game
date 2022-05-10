@@ -29,7 +29,7 @@ namespace Core
 		Vector<float, 4> bounds = Bounds();
 
 		// - Get next frame offset
-		Vector<float, 4> nextPositionOffset = Vector<float, 4>::Append<2, 2>(velocity, velocity) * deltaTime;
+		Vector<float, 4> nextPositionOffset = Vector<float, 4>::Append<2, 2>(velocity, velocity) ;
 		
 		Vector<float, 4> nextPositionOffsetX = Vector<float, 4>(nextPositionOffset);
 		nextPositionOffsetX.Y() = 0;
@@ -48,16 +48,16 @@ namespace Core
 		// If we're not going to hit something along the Y axis
 		if (traceY.size() == 0) {
 			// Move on momentum
-			gameObject->position.Y() += velocity.Y() * deltaTime;
+			gameObject->position.Y() += velocity.Y();
 
 		}
 		else {
-			// Bounce
 			velocity.SetY(0);
 		}
 
+		// If we're not going to hit something along the X axis
 		if (traceX.size() == 0) {
-			gameObject->position.X() += velocity.X() * deltaTime;
+			gameObject->position.X() += velocity.X() ;
 		}
 		else {
 			velocity.SetX(0);
@@ -67,14 +67,14 @@ namespace Core
 		velocity *= airDensity;
 
 		// Add gravity
-		velocity += {0, 0.008f};
-
+		velocity += {0, 0.006f};
 
 		//std::cout << "position: " << gameObject->position << std::endl;
 	}
 
 	void Collider::Draw(SDL_Renderer* renderer)
 	{
+		//return;
 		auto bounds = Bounds();
 
 		// TODO: Should probably rearrange the bounds to fit this more nicely
@@ -84,10 +84,11 @@ namespace Core
 		rect.w = bounds.Z() - bounds.X();
 		rect.h = bounds.Y() - bounds.W();
 
-		SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+		SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
 		SDL_RenderDrawRect(renderer, &rect);
-		//SDL_RenderFillRect(renderer, &rect);
 
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+		//SDL_RenderFillRect(renderer, &rect);
 	}
 
 	Collider* Collider::SetShape(std::vector<Vector<float, 2>> newPoints)
@@ -141,6 +142,12 @@ namespace Core
 	bool Collider::IsActive() { return state == ACTIVE; }
 	bool Collider::IsAsleep() { return state == ASLEEP; }
 	bool Collider::IsKinematic() { return kinematic; }
+
+	Collider* Collider::AddForce(Core::Vector<float, 2> force)
+	{
+		velocity += force;
+		return this;
+	}
 	
 	Vector<float, 4> Collider::Bounds()
 	{
@@ -152,6 +159,6 @@ namespace Core
 		};*/
 		Vector<float, 4> newBound = Vector<float, 4>::Append<2, 2>(gameObject->position + offset, gameObject->position + offset + aabb);
 
-		return newBound;
+		return newBound;	
 	}
 }
