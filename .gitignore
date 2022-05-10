@@ -400,20 +400,3 @@ FodyWeavers.xsd
 
 #*.sln
 #*.vcxproj
-
-
-
-
-/Simple Game Engine/MenuController.h
-/Simple Game Engine/MenuController.cpp
-/Simple Game Engine/MarioAnimations.h
-/Simple Game Engine/Time.h
-/Simple Game Engine/GoombaAI.h
-/Simple Game Engine/GoombaAI.cpp
-/Simple Game Engine/EntityGrounded.h
-/Simple Game Engine/EntityGrounded.cpp
-/Simple Game Engine/ClassDiagram.cd
-/Simple Game Engine/Audio.h
-/Simple Game Engine/Audio.cpp
-/ClassDiagram.png
-/Audio.h

@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="Core::AnimatedSprite&lt;States, Actions&gt;">
+    <Position X="4" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAIAIAAABAAAAAAIAAAAAgAAAA=</HashCode>
+      <FileName>Engine\AnimatedSprite.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Animation&lt;States, Actions&gt;">
+    <Position X="6.25" Y="14.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAgIAAAAAAAABAAQAAAAAQAAABQAA=</HashCode>
+      <FileName>Engine\Animation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Scene">
+    <Position X="3" Y="14" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAgKAgAAAABAAAgACAAAgAAACAAAAAADAAEAAAAIA=</HashCode>
+      <FileName>Engine\Scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Application" Collapsed="true">
+    <Position X="23.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAABAACAAAAAAAAIAAAABCAAAIAAAACAAAAAA=</HashCode>
+      <FileName>Engine\Application.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Collider">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Core::Collider::State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine\Collider.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gISAAASAEAAABgAgEAAABAAAAAgAAAAcAARAAAAAAhE=</HashCode>
+      <FileName>Engine\Collider.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Collision" Collapsed="true">
+    <Position X="25.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAIAAAAAAAAAAAQAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Engine\Collision.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::GameObject" Collapsed="true">
+    <Position X="27.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAIEIRgAACEZIAiIAJAAggECEAAAAIAAAA=</HashCode>
+      <FileName>Engine\GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Component" Collapsed="true">
+    <Position X="12.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAgAAAAAAAIAAAAAAAAAACgBAAAAAAAA=</HashCode>
+      <FileName>Engine\Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::FiniteStateMachine&lt;States, Actions&gt;">
+    <Position X="6" Y="11.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAJEAAAAAAABAAIAAAAAAAAACAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\FiniteStateMachine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Window" Collapsed="true">
+    <Position X="27.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAQAAAgAAAAIAIAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Engine\Window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Input" Collapsed="true">
+    <Position X="23.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAIAAACAgAAAAAgABAAAEAIAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Engine\Input.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Storable">
+    <Position X="3" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Engine\Storable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SDLW::Window" Collapsed="true">
+    <Position X="23.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAARAAAgAAAAIQIAEAAAQAAABAIAACACCAAgAA=</HashCode>
+      <FileName>Engine\SDLWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SDLW::SDLTexture" Collapsed="true">
+    <Position X="25.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAABAAAAAQBQAAAAEAAAAAAAgAAAAIAEAAAgAA=</HashCode>
+      <FileName>Engine\SDLTexture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sprite">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQMAAAABgAAggIAAICIAEAAACBAAgAQAAIAAAAAAAA=</HashCode>
+      <FileName>Engine\Sprite.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tilemap">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAAAAgAAAICIAAAACiEAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Tilemap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityController">
+    <Position X="16.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAABAAAAAAAAAABAAAAAAgQAAAAEAEAAAAAA=</HashCode>
+      <FileName>EntityController.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityGrounded">
+    <Position X="18.75" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAACAAAAAAAAAAAAAAAAAAAEAMAAAAAA=</HashCode>
+      <FileName>EntityGrounded.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuController">
+    <Position X="21.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYIAAAAAAQAAABAIAAAAAAAAAAAAIAAAAAAAAABABA=</HashCode>
+      <FileName>MenuController.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerInput">
+    <Position X="14" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAwgQAgAAABgAQEAAAAAAAEAACAAAAAIAAAAgAAAAAA=</HashCode>
+      <FileName>PlayerInput.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core::Vector&lt;T, N&gt;">
+    <Position X="11.25" Y="14" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAhBbBQAEgAQAAAAAAAQAAAEBgAQEIYAE=</HashCode>
+      <FileName>Engine\Vector.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarioAnimations">
+    <Position X="3.75" Y="7.75" Width="2.75" />
+    <NestedTypes>
+      <Typedef Name="MarioAnimations::inherited" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MarioAnimations.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAAAAAAAAQAAAAAAAAQCAAAAAAAAAgAA=</HashCode>
+      <FileName>MarioAnimations.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Core::Object" Collapsed="true">
+    <Position X="23.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAgAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Object.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Tile" Collapsed="true">
+    <Position X="25.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Engine\Tile.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Audio::Wav" Collapsed="true">
+    <Position X="23.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAABAAAAAAEA=</HashCode>
+      <FileName>Audio.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Time" Collapsed="true">
+    <Position X="27.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAA=</HashCode>
+      <FileName>Time.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="Core::Vector2Int" Collapsed="true">
+    <Position X="14" Y="22.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Vector.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Core::Vector2Float" Collapsed="true">
+    <Position X="13.75" Y="12.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Vector.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Core::RGB" Collapsed="true">
+    <Position X="11" Y="22.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Vector.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Core::RGBA" Collapsed="true">
+    <Position X="11" Y="12.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Vector.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="MarioStates" Collapsed="true">
+    <Position X="25.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAIAA=</HashCode>
+      <FileName>MarioAnimations.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MarioActions" Collapsed="true">
+    <Position X="23.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAkAAAAAAAAACAAgAAAAAAAAAIAAAAAAAAAI=</HashCode>
+      <FileName>MarioAnimations.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
