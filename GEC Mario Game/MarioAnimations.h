@@ -77,7 +77,7 @@ namespace Mario {
             //}
             //moveState = currentMoveState;
 
-            bool currentTurnState = playerInput->GetController()->inputDirection.X() < 0 ^ 0 > entityGrounded->collider->velocity.X();
+            bool currentTurnState = playerInput->GetController()->inputDirection.X() < 0 ^ 0 >= entityGrounded->collider->velocity.X();
             if (currentTurnState) animation.Transition(Actions::Turn);
             //else animation.Transition(Actions::Run);
 

@@ -24,31 +24,32 @@
     <ProjectGuid>{e215ff0f-3a1e-45bf-8c64-a543cd40e5af}</ProjectGuid>
     <RootNamespace>SimpleGameEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>GEC Mario Game</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -141,33 +142,65 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Audio.h" />
+    <ClInclude Include="CircularLinkedList.h" />
+    <ClInclude Include="Engine\AnimatedSprite.h" />
+    <ClInclude Include="Engine\Animation.h" />
     <ClInclude Include="Engine\Application.h" />
+    <ClInclude Include="Engine\Collider.h" />
+    <ClInclude Include="Engine\Collision.h" />
     <ClInclude Include="Engine\Component.h" />
+    <ClInclude Include="Engine\FiniteStateMachine.h" />
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\Object.h" />
     <ClInclude Include="Engine\Renderer.h" />
     <ClInclude Include="Engine\Scene.h" />
+    <ClInclude Include="Engine\SDLTexture.h" />
     <ClInclude Include="Engine\SDLWindow.h" />
+    <ClInclude Include="Engine\Sprite.h" />
     <ClInclude Include="Engine\Storable.h" />
+    <ClInclude Include="Engine\Tile.h" />
+    <ClInclude Include="Engine\Tilemap.h" />
     <ClInclude Include="Engine\Vector.h" />
     <ClInclude Include="Engine\Window.h" />
+    <ClInclude Include="EntityController.h" />
+    <ClInclude Include="EntityGrounded.h" />
+    <ClInclude Include="GoombaAI.h" />
+    <ClInclude Include="GoombaAnimations.h" />
+    <ClInclude Include="MarioAnimations.h" />
+    <ClInclude Include="MenuController.h" />
+    <ClInclude Include="PlayerInput.h" />
+    <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="CircularLinkedList.cpp" />
     <ClCompile Include="Engine\Application.cpp" />
+    <ClCompile Include="Engine\Collider.cpp" />
+    <ClCompile Include="Engine\Collision.cpp" />
     <ClCompile Include="Engine\Component.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
-    <ClCompile Include="Engine\Main.cpp" />
     <ClCompile Include="Engine\Object.cpp" />
     <ClCompile Include="Engine\Renderer.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
+    <ClCompile Include="Engine\SDLTexture.cpp" />
     <ClCompile Include="Engine\SDLWindow.cpp" />
+    <ClCompile Include="Engine\Sprite.cpp" />
     <ClCompile Include="Engine\Storable.cpp" />
+    <ClCompile Include="Engine\Tilemap.cpp" />
     <ClCompile Include="Engine\Window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="EntityController.cpp" />
+    <ClCompile Include="EntityGrounded.cpp" />
+    <ClCompile Include="GoombaAI.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MenuController.cpp" />
+    <ClCompile Include="PlayerInput.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

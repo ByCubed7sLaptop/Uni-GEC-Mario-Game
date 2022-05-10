@@ -20,7 +20,7 @@ void GoombaAI::Update(float deltaTime)
             animations->animation.Transition(Goomba::Kill);
             // TODO: Add velocity to Mario Y to inact bounce
 
-            Audio::Play("goomba");
+            Audio::Play("stomp");
             
             isDead = true;
         }

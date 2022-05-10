@@ -280,7 +280,7 @@ int main(int argc, char* args[])
 
     Audio::Init("music_stage_clear");
     Audio::Load("jump-small", "jump");
-    Audio::Load("", "jump");
+    Audio::Load("stomp", "stomp");
 
     Core::Application* app = new Core::Application("Mario");
 
